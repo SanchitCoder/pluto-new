@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+    /* Lenis drives smooth scroll when enabled; avoid double-smoothing with native */
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    @apply bg-luxury-canvas;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    @apply font-body bg-luxury-canvas text-gray-900 antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    min-height: 100%;
+    @apply bg-luxury-canvas;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-mesh {
+    background:
+      radial-gradient(at 27% 37%, hsla(215, 98%, 61%, 0.15) 0px, transparent 0%),
+      radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 0.15) 0px, transparent 50%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Client reviews: rotating conic “comet” visible only in the 2px card rim */
+  @keyframes client-review-shimmer-spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  .client-review-shimmer-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220%;
+    aspect-ratio: 1;
+    pointer-events: none;
+    will-change: transform;
+    animation: client-review-shimmer-spin 5.5s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 228deg,
+      rgba(34, 211, 238, 0.12) 248deg,
+      rgba(34, 211, 238, 0.75) 265deg,
+      #f8fafc 272deg,
+      rgba(56, 189, 248, 0.85) 278deg,
+      rgba(125, 211, 252, 0.4) 292deg,
+      transparent 308deg,
+      transparent 360deg
+    );
+  }
+
+  .group:hover .client-review-shimmer-ring {
+    animation-duration: 2.75s;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 225deg,
+      rgba(34, 211, 238, 0.2) 245deg,
+      rgba(34, 211, 238, 0.95) 262deg,
+      #ffffff 270deg,
+      rgba(147, 197, 253, 0.95) 276deg,
+      rgba(56, 189, 248, 0.55) 290deg,
+      transparent 306deg,
+      transparent 360deg
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-review-shimmer-ring {
+      animation: none;
+      opacity: 0.35;
+    }
+    .group:hover .client-review-shimmer-ring {
+      animation: none;
+    }
+  }
+
+  /* Corporate travel solutions cards: same conic shimmer as client reviews, only on hover */
+  .services-grid-shimmer-ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220%;
+    aspect-ratio: 1;
+    pointer-events: none;
+    will-change: transform, opacity;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: client-review-shimmer-spin 5.5s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 228deg,
+      rgba(34, 211, 238, 0.12) 248deg,
+      rgba(34, 211, 238, 0.75) 265deg,
+      #f8fafc 272deg,
+      rgba(56, 189, 248, 0.85) 278deg,
+      rgba(125, 211, 252, 0.4) 292deg,
+      transparent 308deg,
+      transparent 360deg
+    );
+  }
+
+  .group:hover .services-grid-shimmer-ring {
+    opacity: 1;
+    animation-duration: 2.75s;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 225deg,
+      rgba(34, 211, 238, 0.2) 245deg,
+      rgba(34, 211, 238, 0.95) 262deg,
+      #ffffff 270deg,
+      rgba(147, 197, 253, 0.95) 276deg,
+      rgba(56, 189, 248, 0.55) 290deg,
+      transparent 306deg,
+      transparent 360deg
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-grid-shimmer-ring {
+      opacity: 0 !important;
+      animation: none !important;
+    }
+    .group:hover .services-grid-shimmer-ring {
+      opacity: 0 !important;
+    }
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Luna AI FAB: teal → lime → yellow conic border, soft float shadow */
+  @keyframes luna-ai-border-spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  .luna-ai-fab-shell {
+    position: relative;
+    display: inline-flex;
+    border-radius: 9999px;
+    padding: 2.5px;
+    overflow: hidden;
+    box-shadow:
+      0 12px 32px -8px rgba(0, 0, 0, 0.24),
+      0 6px 16px -6px rgba(0, 0, 0, 0.14),
+      0 0 0 1px rgba(192, 191, 190, 0.45),
+      0 0 28px -6px rgba(13, 207, 181, 0.28),
+      0 0 22px -8px rgba(115, 204, 36, 0.2);
+  }
+
+  .luna-ai-fab-shell:hover {
+    box-shadow:
+      0 14px 36px -8px rgba(0, 0, 0, 0.26),
+      0 8px 20px -6px rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(192, 191, 190, 0.5),
+      0 0 36px -4px rgba(13, 207, 181, 0.38),
+      0 0 28px -6px rgba(115, 204, 36, 0.3);
+  }
+
+  .luna-ai-fab-spin {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 220%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    will-change: transform;
+    background: conic-gradient(
+      from 0deg,
+      #0dcfb5,
+      #5fd632,
+      #73cc24,
+      #d4e82a,
+      #f0e85a,
+      #73cc24,
+      #0dcfb5,
+      #0dcfb5
+    );
+    animation: luna-ai-border-spin 5s linear infinite;
+  }
+
+  .luna-ai-fab-shell:hover .luna-ai-fab-spin {
+    animation-duration: 2.4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .luna-ai-fab-spin {
+      animation: none;
+    }
+    .luna-ai-fab-shell:hover .luna-ai-fab-spin {
+      animation: none;
+    }
+  }
+
+  /* Prevent horizontal overflow on mobile */
+  img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure tables and pre elements don't overflow */
+  table, pre {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  /* Mobile scrolling performance optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile sticky CTA safe area support */
+  @media (max-width: 768px) {
+    .mobile-cta-spacing {
+      padding-bottom: calc(6rem + env(safe-area-inset-bottom));
+    }
+
+    .mobile-sticky-cta {
+      position: fixed !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      z-index: 9999 !important;
+      animation: slideUp 0.3s ease-out;
+      pointer-events: auto;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Ensure parent containers don't break sticky */
+    .mobile-cta-spacing,
+    .mobile-cta-spacing > * {
+      overflow-x: hidden;
+    }
+
+    .mobile-cta-spacing {
+      overflow-y: visible;
+    }
+  }
+}
+
