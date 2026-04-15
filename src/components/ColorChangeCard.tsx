@@ -2,7 +2,7 @@ import React from 'react';
 
 export type ColorChangeCardProps = {
   title: string;
-  description: string;
+  description?: string;
   imageUrl: string;
   className?: string;
 };
@@ -29,11 +29,20 @@ export const ColorChangeCard: React.FC<ColorChangeCardProps> = ({
           />
         </div>
 
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[4.6rem] bg-gradient-to-t from-black via-black/75 to-transparent sm:h-[5.175rem]"
+          aria-hidden
+        />
+
         <div className="relative z-10 mt-auto flex flex-col justify-end p-4 sm:p-5">
-          <h3 className="mb-1 text-left text-lg font-bold leading-tight text-white sm:text-xl">
+          <h3 className="text-left text-lg font-bold leading-tight text-white sm:text-xl">
             {title}
           </h3>
-          <p className="text-left text-xs leading-snug text-white sm:text-sm">{description}</p>
+          {description?.trim() ? (
+            <p className="mt-1 text-left text-xs leading-snug text-white sm:text-sm">
+              {description}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

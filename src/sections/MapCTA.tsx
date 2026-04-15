@@ -6,20 +6,32 @@ import Button from '../components/Button';
 import ConsultationModal from '../components/ConsultationModal';
 import { FadeInSection } from '../components/FadeInSection';
 
+/** Pluto Travels LLC Dubai — Prism Tower, Business Bay (matches Google Maps place). */
+const PLUTO_DUBAI_MAPS_PLACE_URL =
+  'https://www.google.com/maps/place/Pluto+Travels+LLC+Dubai/@25.1873455,55.2598099,18.77z/data=!4m6!3m5!1s0x3e5f4314df2d91b9:0xc4d4a502001393c9!8m2!3d25.1874761!4d55.2611572!16s%2Fg%2F11bbwr4pbz?hl=en-US&entry=ttu';
+
+const PLUTO_DUBAI_MAP_EMBED_URL =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.5!2d55.2611572!3d25.1874761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4314df2d91b9%3A0xc4d4a502001393c9!2sPluto%20Travels%20LLC%20Dubai!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2s';
+
 const MapCTA: React.FC = () => {
   const [consultOpen, setConsultOpen] = useState(false);
   
   const contactInfo = [
     { icon: Phone, title: 'Call Us', value: '+971 50 911 0065', link: 'tel:+971509110065' },
     { icon: Mail, title: 'Email', value: 'sales@plutotravels.ae', link: 'mailto:sales@plutotravels.ae' },
-    { icon: MapPin, title: 'Visit Us', value: 'Dubai, United Arab Emirates', link: '#' },
+    {
+      icon: MapPin,
+      title: 'Visit Us',
+      value: 'Dubai, United Arab Emirates',
+      link: PLUTO_DUBAI_MAPS_PLACE_URL,
+    },
     { icon: Clock, title: 'Hours', value: '24/7 Support Available', link: '#' },
   ];
 
   return (
     <FadeInSection className="py-16 bg-luxury-canvas">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:items-stretch">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -38,6 +50,8 @@ const MapCTA: React.FC = () => {
                 <motion.a
                   key={index}
                   href={info.link}
+                  target={info.link.startsWith('http') ? '_blank' : undefined}
+                  rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -72,17 +86,16 @@ const MapCTA: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative flex min-h-0 w-full lg:h-full"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-96">
+            <div className="relative w-full flex-1 overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[22rem]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462565.7183640648!2d54.89782991796875!3d25.076022799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
+                title="Pluto Travels LLC Dubai — map"
+                src={PLUTO_DUBAI_MAP_EMBED_URL}
+                className="absolute inset-0 h-full w-full border-0 grayscale transition-all duration-500 hover:grayscale-0"
                 allowFullScreen
                 loading="lazy"
-                className="grayscale hover:grayscale-0 transition-all duration-500"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </motion.div>

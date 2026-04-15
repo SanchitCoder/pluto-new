@@ -12,7 +12,6 @@ type ServiceItem = {
   color: string;
   link: string;
   backgroundImage?: string;
-  cardDescription?: string;
 };
 
 const ServicesGrid: React.FC = () => {
@@ -23,8 +22,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-primary-coral to-primary-orange',
       link: '/business-travel',
       backgroundImage: '/flight-management-corporate-sunset.png',
-      cardDescription:
-        'Corporate fares, policy-aligned booking, and round-the-clock support for every itinerary.',
     },
     {
       icon: Hotel,
@@ -32,8 +29,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-accent-gold to-primary-orange',
       link: '/services',
       backgroundImage: '/hotel-solutions-luxury.png',
-      cardDescription:
-        'Premium stays, negotiated rates, and consolidated billing wherever your teams travel.',
     },
     {
       icon: Car,
@@ -41,8 +36,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-primary-green to-accent-emerald',
       link: '/services',
       backgroundImage: '/ground-transportation-sprinter.png',
-      cardDescription:
-        'Airport transfers, chauffeured cars, and ground moves aligned with your travel policy.',
     },
     {
       icon: Briefcase,
@@ -50,8 +43,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-primary-teal to-primary-navy',
       link: '/corporate-travel',
       backgroundImage: '/corporate-travel-terminal.png',
-      cardDescription:
-        'End-to-end program design, duty of care, and management that scales with your business.',
     },
     {
       icon: Ship,
@@ -59,8 +50,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-blue-500 to-blue-700',
       link: '/mice',
       backgroundImage: '/mice-events-conference.png',
-      cardDescription:
-        'Conferences, incentives, and events delivered from planning through on-site execution.',
     },
     {
       icon: Calendar,
@@ -68,8 +57,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-purple-500 to-purple-700',
       link: '/corporate-travel',
       backgroundImage: '/travel-policy-management-card.png',
-      cardDescription:
-        'Clear rules, approvals, and visibility so spend and compliance stay on track.',
     },
     {
       icon: Globe,
@@ -77,8 +64,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-primary-orange to-accent-coral',
       link: '/corporate',
       backgroundImage: '/global-coverage-hand-globe.png',
-      cardDescription:
-        'Worldwide sourcing, local expertise, and support across regions and time zones.',
     },
     {
       icon: FileText,
@@ -86,8 +71,6 @@ const ServicesGrid: React.FC = () => {
       color: 'from-red-500 to-pink-600',
       link: '/corporate-travel',
       backgroundImage: '/travel-analytics-dashboard-card.png',
-      cardDescription:
-        'Spend visibility, benchmarks, and dashboards that turn trip data into decisions.',
     },
   ];
 
@@ -118,11 +101,7 @@ const ServicesGrid: React.FC = () => {
                 }
               >
                 {service.backgroundImage ? (
-                  <ColorChangeCard
-                    title={service.title}
-                    description={service.cardDescription ?? ''}
-                    imageUrl={service.backgroundImage}
-                  />
+                  <ColorChangeCard title={service.title} imageUrl={service.backgroundImage} />
                 ) : (
                   <>
                     <service.icon
