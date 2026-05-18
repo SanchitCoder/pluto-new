@@ -22,6 +22,16 @@ const BlogSection: React.FC = () => {
 
   const blogs: BlogCardData[] = [
     {
+      id: 'why-uae-companies-switching-corporate-travel-management-2026',
+      image: '/corporate-travel-management-card.png',
+      title: 'Why Companies in the UAE Are Switching to Corporate Travel Management in 2026',
+      excerpt:
+        'Discover why businesses in Dubai, Abu Dhabi, and across the UAE are moving from DIY booking to corporate travel management—to cut hidden costs, save time, and gain control over travel spend.',
+      author: 'Corporate Team',
+      date: 'May 18, 2026',
+      category: 'Corporate Travel',
+    },
+    {
       id: 'top-european-destinations-schengen-visa-guide-pluto-travels',
       image: '/blog-european-schengen-destinations.png',
       title:
