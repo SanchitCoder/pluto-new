@@ -3,43 +3,73 @@ import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Youtube, Linkedin } fr
 import { Link } from 'react-router-dom';
 import Container from './Container';
 import { FadeInFooter } from './FadeInSection';
-// Image moved to public folder
+import { SITE } from '../lib/siteConfig';
 
 const Footer: React.FC = () => {
   const services = [
-    { name: 'Platinum Concierge', href: '/platinum' },
-    { name: 'Corporate Travel', href: '/corporate' },
+    { name: 'Corporate Travel Management', href: '/corporate-travel' },
     { name: 'MICE & Events', href: '/mice' },
+    { name: 'Luxury Travel', href: '/luxury-travel' },
+    { name: 'Platinum Concierge', href: '/platinum' },
     { name: 'Holiday Packages', href: '/holidays' },
     { name: 'Visa Services', href: '/visa/africa' },
-    { name: 'Marine Travel', href: '/industries' },
-    { name: 'Energy Travel', href: '/industries' },
+    { name: 'Business Bay Office', href: '/travel-agency-business-bay-dubai' },
+  ];
+
+  const sectors = [
+    { name: 'Energy & Oil/Gas Travel', href: '/corporate-travel-energy' },
+    { name: 'Marine Crew Travel', href: '/marine-crew-travel-dubai' },
+    { name: 'Mining Sector Travel', href: '/mining-sector-travel' },
+    { name: 'Sports Team Travel', href: '/sports-team-travel' },
+    { name: 'All Industries', href: '/industries' },
+  ];
+
+  const popular = [
+    { name: 'Qatar Visa from Dubai', href: '/qatar-visa-from-dubai' },
+    { name: 'Bishkek Packages', href: '/bishkek-holiday-packages-dubai' },
+    { name: 'Group Travel Booking', href: '/group-travel-booking-dubai' },
+    { name: 'Contact & Quote', href: '/contact' },
   ];
 
   const company = [
-    { name: 'About Us', href: '/' },
+    { name: 'About Us', href: '/#about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Privacy Policy', href: '/privacy-policy' },
+    { name: 'Terms & Conditions', href: '/terms-and-conditions' },
   ];
 
   return (
     <FadeInFooter className="bg-gradient-to-br from-luxury-darkBlue via-primary-navy to-luxury-slate text-white py-16">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <img src="/Pluto_Final_logo.png" alt="Pluto Travels" className="h-10 sm:h-12 md:h-14 w-auto" />
-              <div className="h-8 w-px bg-white/30"></div>
-              <img src="/Banner-Pluto.jpeg" alt="Banner" className="h-8 w-auto max-w-[120px] object-contain" />
+              <img
+                src="/Pluto_Final_logo.png"
+                alt="Pluto Travels LLC — IATA travel agency Dubai"
+                className="h-10 sm:h-12 md:h-14 w-auto"
+                loading="lazy"
+              />
+              <div className="h-8 w-px bg-white/30" />
+              <img
+                src="/Banner-Pluto.jpeg"
+                alt="Pluto Travels Dubai corporate and luxury travel"
+                className="h-8 w-auto max-w-[120px] object-contain"
+                loading="lazy"
+              />
             </div>
-            <p className="text-sm text-white/70 mb-6">
-              Dubai's premier travel concierge for executives and discerning
-              travelers since 2007.
+            <p className="text-sm text-white/70 mb-4">
+              IATA-accredited travel agency in Business Bay, Dubai since 2007. Corporate travel, MICE, luxury
+              concierge & visa services — {SITE.aggregateRating.reviewCount} Google reviews at {SITE.aggregateRating.ratingValue}★.
+            </p>
+            <p className="text-xs text-white/50">
+              {SITE.address.streetAddress}, {SITE.address.addressLocality}, UAE
             </p>
             <div className="mt-6">
               <h4 className="font-semibold mb-4 text-lg">Follow Us</h4>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://www.instagram.com/luxurytravellerdubai"
+                  href={SITE.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
@@ -48,7 +78,7 @@ const Footer: React.FC = () => {
                   <Instagram size={20} className="text-white" />
                 </a>
                 <a
-                  href="https://www.facebook.com/Plutotravelsdubai"
+                  href={SITE.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
@@ -57,7 +87,7 @@ const Footer: React.FC = () => {
                   <Facebook size={20} className="text-white" />
                 </a>
                 <a
-                  href="https://www.youtube.com/@plutotravelsdubai9722/"
+                  href={SITE.social.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
@@ -66,7 +96,7 @@ const Footer: React.FC = () => {
                   <Youtube size={20} className="text-white" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/plutotravelsdubai/?viewAsMember=true"
+                  href={SITE.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
@@ -74,59 +104,16 @@ const Footer: React.FC = () => {
                 >
                   <Linkedin size={20} className="text-white" />
                 </a>
-                <a
-                  href="https://www.quora.com/profile/Pluto-Travels-3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
-                  aria-label="Quora"
-                  title="Quora"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white">
-                    <path d="M12.738 18.701c-2.154 0-3.794-1.175-3.794-2.709 0-.83.601-1.543 1.453-1.943-.495-.608-.795-1.346-.795-2.155 0-2.01 1.72-3.64 3.837-3.64s3.837 1.63 3.837 3.64c0 .809-.3 1.547-.795 2.155.852.4 1.453 1.113 1.453 1.943 0 1.534-1.64 2.709-3.794 2.709m-4.493-2.709c0 1.475 1.508 2.601 3.494 2.601s3.494-1.126 3.494-2.601c0-.713-.5-1.32-1.2-1.615l-.3-.12c-.3-.12-.6-.24-.6-.48v-.12c0-.24.3-.36.6-.48l.3-.12c.7-.295 1.2-.902 1.2-1.615 0-1.475-1.508-2.601-3.494-2.601s-3.494 1.126-3.494 2.601c0 .713.5 1.32 1.2 1.615l.3.12c.3.12.6.24.6.48v.12c0 .24-.3.36-.6.48l-.3.12c-.7.295-1.2.902-1.2 1.615M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2"/>
-                  </svg>
-                </a>
-                <a
-                  href="https://www.reddit.com/user/plutotravelsdubai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:scale-110 border border-white/20"
-                  aria-label="Reddit"
-                  title="Reddit"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white">
-                    <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
-                  </svg>
-                </a>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-lg">Our Services</h4>
-            <ul className="space-y-2">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <Link
-                    to={service.href}
-                    className="text-sm text-white/70 hover:text-accent-coral transition-colors"
-                  >
-                    {service.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4 text-lg">Company</h4>
-            <ul className="space-y-2">
-              {company.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={item.href}
-                    className="text-sm text-white/70 hover:text-accent-coral transition-colors"
-                  >
+            <h4 className="font-semibold mb-4 text-lg">Services</h4>
+            <ul className="space-y-2 text-sm">
+              {services.map((item) => (
+                <li key={item.href}>
+                  <Link to={item.href} className="text-white/70 hover:text-primary-gold transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -135,59 +122,95 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4 text-lg">Contact Us</h4>
+            <h4 className="font-semibold mb-4 text-lg">Sectors</h4>
+            <ul className="space-y-2 text-sm">
+              {sectors.map((item) => (
+                <li key={item.href}>
+                  <Link to={item.href} className="text-white/70 hover:text-primary-gold transition-colors">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4 text-lg">Company</h4>
+            <ul className="space-y-2 text-sm mb-6">
+              {company.map((item) => (
+                <li key={item.name}>
+                  <Link to={item.href} className="text-white/70 hover:text-primary-gold transition-colors">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="font-semibold mb-3 text-sm text-primary-gold">Popular</h4>
+            <ul className="space-y-2 text-sm">
+              {popular.map((item) => (
+                <li key={item.href}>
+                  <Link to={item.href} className="text-white/70 hover:text-primary-gold transition-colors">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 border-t border-white/10 pt-8 mb-8">
+          <div>
+            <h4 className="font-semibold mb-4 text-lg">Contact Us — Dubai HQ</h4>
             <div className="space-y-3 text-sm">
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-primary-gold flex-shrink-0 mt-1" size={18} />
-                  <div>
-                    <p className="font-semibold text-white">Dubai Office</p>
-                    <p>Prism Tower, Business Bay</p>
-                    <p>Dubai, UAE</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-primary-gold flex-shrink-0 mt-1" size={18} />
-                  <div>
-                    <p className="font-semibold text-white">Ras Al Khaimah Office</p>
-                    <p>Shop-3, 208 Sheikh Mohamed Bin Salem Rd</p>
-                    <p>Dafan Ras Al Khaimah - Ras Al Khaimah</p>
-                    <p>Pluto travels and tourism</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-primary-gold flex-shrink-0 mt-1" size={18} />
-                  <div>
-                    <p className="font-semibold text-white">Ahmedabad Office</p>
-                    <p>SAL Hospital & Medical Institute, Maple Tree</p>
-                    <p>Nr. Surdhara Circle, Road</p>
-                    <p>Ahmedabad, Gujarat 380052, India</p>
-                  </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="text-primary-gold flex-shrink-0 mt-1" size={18} />
+                <div>
+                  <p className="font-semibold text-white">Business Bay Office</p>
+                  <p>{SITE.address.streetAddress}</p>
+                  <p>{SITE.address.addressLocality}, UAE</p>
+                  <Link to="/travel-agency-business-bay-dubai" className="text-primary-gold hover:underline text-xs mt-1 inline-block">
+                    Directions & local info →
+                  </Link>
                 </div>
               </div>
-              <a href="tel:+971509110065" className="flex items-center gap-3 hover:text-primary-gold transition-colors">
+              <a href={`tel:${SITE.phoneOffice}`} className="flex items-center gap-3 hover:text-primary-gold transition-colors">
                 <Phone className="text-primary-gold flex-shrink-0" size={18} />
-                <span> 04 392 0930</span>
+                <span>
+                  Office: <strong>{SITE.phoneOfficeDisplay}</strong>
+                </span>
               </a>
-              <a href="mailto:sapna@plutotravels.ae" className="flex items-center gap-3 hover:text-primary-gold transition-colors">
-                <Mail className="text-primary-gold flex-shrink-0" size={18} />
-                <span>sapna@plutotravels.ae</span>
+              <a href={`tel:${SITE.phoneMobile}`} className="flex items-center gap-3 hover:text-primary-gold transition-colors">
+                <Phone className="text-primary-gold flex-shrink-0" size={18} />
+                <span>
+                  Mobile / WhatsApp: <strong>{SITE.phoneMobileDisplay}</strong>
+                </span>
               </a>
-              <a href="mailto:sales@plutotravels.ae" className="flex items-center gap-3 hover:text-primary-gold transition-colors">
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 hover:text-primary-gold transition-colors">
                 <Mail className="text-primary-gold flex-shrink-0" size={18} />
-                <span>sales@plutotravels.ae</span>
+                <span>{SITE.email}</span>
               </a>
               <div className="flex items-center gap-3">
                 <Clock className="text-primary-gold flex-shrink-0" size={18} />
-                <span>24/7 Available</span>
+                <span>24/7 Travel Support</span>
               </div>
             </div>
+          </div>
+          <div className="text-sm text-white/70">
+            <p className="mb-2">
+              <strong className="text-white">Pluto Travels LLC</strong> — corporate travel management, MICE event
+              planning, luxury VIP concierge, visa assistance, and holiday packages from Dubai.
+            </p>
+            <p>
+              Request a quote for corporate travel, marine crew logistics, energy sector rotations, or sports team
+              travel. IATA accredited · Est. {SITE.foundingDate} · {SITE.aggregateRating.ratingValue}★ Google rating.
+            </p>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-white/60">
-            © 2025 Pluto Travels LLC, Prism Tower, Business Bay, Dubai, UAE. All rights reserved.
+            © {new Date().getFullYear()} {SITE.name}, {SITE.address.streetAddress}, {SITE.address.addressLocality}, UAE.
+            All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/privacy-policy" className="text-white/60 hover:text-white transition-colors">

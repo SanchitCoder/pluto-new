@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Crisis campaign pages remain indexable for paid traffic; remove if you prefer noindex on /crisis
+Allow: /crisis
+Allow: /crisis/form
+
+Disallow: /thank-you
+
+Sitemap: https://plutotravels.ae/sitemap.xml

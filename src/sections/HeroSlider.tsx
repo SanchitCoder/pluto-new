@@ -109,6 +109,9 @@ const HeroSlider: React.FC = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
+      <h1 className="sr-only">
+        Pluto Travels — Dubai&apos;s Premier Luxury Travel Concierge & Corporate Travel Management
+      </h1>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
@@ -152,9 +155,9 @@ const HeroSlider: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-3xl w-full"
         >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-[1.1] tracking-tight drop-shadow-lg">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-[1.1] tracking-tight drop-shadow-lg">
             {slides[currentSlide].title || fallbackTitle}
-          </h1>
+          </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 mb-4 sm:mb-6 md:mb-8 font-light drop-shadow-md">
             {slides[currentSlide].subtitle || fallbackSubtitle}
           </p>

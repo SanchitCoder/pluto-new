@@ -182,9 +182,9 @@ const CorporateTravelManagementPage: React.FC = () => {
               className="text-white max-w-4xl"
             >
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Corporate Travel
+                Corporate Travel Management
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-accent-gold to-primary-coral">
-                  Management
+                  Dubai & UAE
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">

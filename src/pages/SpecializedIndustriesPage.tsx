@@ -22,6 +22,7 @@ import Footer from '../components/Footer';
 import LunaAIChatButton from '../components/LunaAIChatButton';
 import MobileBottomCTA from '../components/MobileBottomCTA';
 import ConsultationModal from '../components/ConsultationModal';
+import { Link } from 'react-router-dom';
 
 interface Industry {
   id: string;
@@ -355,6 +356,28 @@ const SpecializedIndustriesPage: React.FC = () => {
                   ))}
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </Container>
+      </FadeInSection>
+
+      <FadeInSection className="py-12 bg-luxury-canvas">
+        <Container>
+          <h2 className="mb-6 text-2xl font-bold text-luxury-darkBlue">Sector Landing Pages</h2>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { href: '/corporate-travel-energy', label: 'Energy & Oil/Gas Travel' },
+              { href: '/marine-crew-travel-dubai', label: 'Marine Crew Travel Dubai' },
+              { href: '/mining-sector-travel', label: 'Mining Sector Travel' },
+              { href: '/sports-team-travel', label: 'Sports Team Travel UAE' },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="rounded-full border border-primary-teal/30 bg-white px-4 py-2 text-sm font-medium text-primary-teal hover:bg-primary-teal hover:text-white"
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
         </Container>

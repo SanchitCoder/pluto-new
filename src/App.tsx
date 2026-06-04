@@ -1,7 +1,8 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import { SmoothScrolling } from './components/SmoothScrolling';
+import GlobalSEO from './components/GlobalSEO';
 import NewHomePage from './pages/NewHomePage';
 import DestinationsPage from './pages/DestinationsPage';
 import ContactPage from './pages/ContactPage';
@@ -28,10 +29,19 @@ import LuxuryTravelPage from './pages/LuxuryTravelPage';
 import CrisisLandingPage from './pages/CrisisLandingPage';
 import CrisisFormPage from './pages/CrisisFormPage';
 import ThankYouPage from './pages/ThankYouPage';
+import SEOLandingPage from './components/SEOLandingPage';
+import { getLandingPageConfig, LANDING_PAGE_SLUGS } from './data/landingPages';
+
+function LandingRoute({ slug }: { slug: string }) {
+  const config = getLandingPageConfig(slug);
+  if (!config) return null;
+  return <SEOLandingPage config={config} />;
+}
 
 function AppContent() {
   return (
     <>
+      <GlobalSEO />
       <ScrollToTop />
       <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-luxury-canvas pt-0 mt-0">
         <Routes>
@@ -40,11 +50,15 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/corporate" element={<CorporateTravelPage />} />
           <Route path="/corporate-travel" element={<CorporateTravelManagementPage />} />
+          <Route path="/corporate-travel-dubai" element={<Navigate to="/corporate-travel" replace />} />
           <Route path="/mice" element={<MICEAndEventsPage />} />
+          <Route path="/mice-dubai" element={<Navigate to="/mice" replace />} />
           <Route path="/mice/:eventType" element={<MICEEventDetailPage />} />
           <Route path="/industries" element={<SpecializedIndustriesPage />} />
           <Route path="/personal" element={<PersonalTravelPage />} />
           <Route path="/platinum" element={<PlatinumConciergePage />} />
+          <Route path="/luxury-travel" element={<LuxuryTravelPage />} />
+          <Route path="/luxury-travel-dubai" element={<Navigate to="/luxury-travel" replace />} />
           <Route path="/holidays" element={<HolidayPackagesPage />} />
           <Route path="/services" element={<EssentialServicesPage />} />
           <Route path="/package/:packageId" element={<PackageDetailPage />} />
@@ -54,13 +68,16 @@ function AppContent() {
           <Route path="/first-class-travel" element={<FirstClassTravelPage />} />
           <Route path="/visa/:region" element={<VisaPage />} />
           <Route path="/visa/:region/:countryId" element={<VisaDetailPage />} />
+          <Route path="/visa-services-dubai" element={<Navigate to="/visa/africa" replace />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
           <Route path="/business-landing" element={<BusinessLandingPage />} />
-          <Route path="/luxury-travel" element={<LuxuryTravelPage />} />
           <Route path="/crisis" element={<CrisisLandingPage />} />
           <Route path="/crisis/form" element={<CrisisFormPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
+          {LANDING_PAGE_SLUGS.map((slug) => (
+            <Route key={slug} path={`/${slug}`} element={<LandingRoute slug={slug} />} />
+          ))}
         </Routes>
       </div>
     </>
@@ -69,11 +86,13 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <SmoothScrolling>
-        <AppContent />
-      </SmoothScrolling>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <SmoothScrolling>
+          <AppContent />
+        </SmoothScrolling>
+      </Router>
+    </HelmetProvider>
   );
 }
 

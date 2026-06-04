@@ -22,7 +22,7 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <FadeInSection className="py-16 bg-gradient-to-br from-luxury-darkBlue to-primary-navy text-white">
+    <FadeInSection id="about" className="py-16 bg-gradient-to-br from-luxury-darkBlue to-primary-navy text-white">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div

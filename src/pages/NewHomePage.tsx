@@ -22,6 +22,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import LunaAIChatButton from '../components/LunaAIChatButton';
 import MobileBottomCTA from '../components/MobileBottomCTA';
+import InternalLinksSection from '../components/InternalLinksSection';
 import FloatingWhatsAppButton from '../components/FloatingWhatsAppButton';
 
 const NewHomePage: React.FC = () => {
@@ -79,6 +80,7 @@ const NewHomePage: React.FC = () => {
         <TestimonialsSection />
         <BlogSection />
         <FAQSection />
+        <InternalLinksSection />
         <MapCTA />
         <Footer />
       </motion.main>

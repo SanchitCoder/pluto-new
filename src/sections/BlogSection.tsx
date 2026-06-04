@@ -1,8 +1,7 @@
-import React, { useCallback } from 'react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Container from '../components/Container';
-import ContentShuffleStack from '../components/ContentShuffleStack';
+import BlogCarousel from '../components/BlogCarousel';
 import { FadeInSection } from '../components/FadeInSection';
 
 export type BlogCardData = {
@@ -15,12 +14,40 @@ export type BlogCardData = {
   category: string;
 };
 
-const BLOG_INTERVAL_MS = 2500;
-
 const BlogSection: React.FC = () => {
   const navigate = useNavigate();
 
   const blogs: BlogCardData[] = [
+    {
+      id: 'corporate-travel-policy-guide-uae-companies',
+      image: '/corporate-travel-management.png',
+      title: 'Corporate Travel Policy Guide for UAE Companies (2026)',
+      excerpt:
+        'Build a corporate travel policy that controls spend, ensures duty of care, and keeps UAE teams compliant — approvals, budgets, booking rules, and best practices.',
+      author: 'Corporate Team',
+      date: 'Jun 5, 2026',
+      category: 'Corporate Travel',
+    },
+    {
+      id: 'mice-dubai-planners-guide-2026',
+      image: '/mice-events-conference.png',
+      title: 'MICE in Dubai: A Planner\'s Guide (2026)',
+      excerpt:
+        'Plan successful MICE events in Dubai — venues, visas, incentives, logistics, and local regulations. A practical guide for corporate event teams.',
+      author: 'Corporate Team',
+      date: 'Jun 5, 2026',
+      category: 'MICE & Events',
+    },
+    {
+      id: 'best-time-plan-corporate-incentive-trips-uae',
+      image: '/global-business-travel-package.png',
+      title: 'Best Time to Plan Corporate Incentive Trips from the UAE',
+      excerpt:
+        'When to book corporate incentive travel from the UAE — seasons, lead times, budgeting cycles, and destination tips for HR and event planners.',
+      author: 'Corporate Team',
+      date: 'Jun 5, 2026',
+      category: 'Corporate Travel',
+    },
     {
       id: 'why-uae-companies-switching-corporate-travel-management-2026',
       image: '/corporate-travel-management-card.png',
@@ -133,70 +160,64 @@ const BlogSection: React.FC = () => {
     },
   ];
 
-  const renderBlogCard = useCallback(
-    (blog: BlogCardData) => (
-      <div className="whitespace-normal bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer">
-        <div className="relative h-48 overflow-hidden">
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="bg-primary-coral text-white px-3 py-1 rounded-full text-xs font-semibold">
-              {blog.category}
-            </span>
-          </div>
-        </div>
-
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-luxury-darkBlue mb-3 group-hover:text-primary-coral transition-colors break-words text-pretty">
-            {blog.title}
-          </h3>
-          <p className="text-gray-600 mb-4 line-clamp-2">{blog.excerpt}</p>
-
-          <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-            <div className="flex items-center gap-1">
-              <User size={14} />
-              <span>{blog.author}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Calendar size={14} />
-              <span>{blog.date}</span>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="flex items-center gap-2 text-primary-teal font-semibold group-hover:gap-4 transition-all cursor-pointer text-left w-full"
-            onClick={() => navigate(`/blog/${blog.id}`)}
-          >
-            <span>Read More</span>
-            <ArrowRight size={16} />
-          </button>
-        </div>
+  const renderBlogCard = (blog: BlogCardData) => (
+    <article
+      className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl"
+      onClick={() => navigate(`/blog/${blog.id}`)}
+      onKeyDown={(e) => e.key === 'Enter' && navigate(`/blog/${blog.id}`)}
+      role="link"
+      tabIndex={0}
+    >
+      <div className="relative h-44 shrink-0 overflow-hidden sm:h-48">
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        <span className="absolute left-3 top-3 rounded-full bg-primary-coral px-3 py-1 text-xs font-semibold text-white">
+          {blog.category}
+        </span>
       </div>
-    ),
-    [navigate]
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="mb-2 line-clamp-2 text-lg font-bold text-luxury-darkBlue transition-colors group-hover:text-primary-coral sm:text-xl">
+          {blog.title}
+        </h3>
+        <p className="mb-4 line-clamp-2 flex-1 text-sm text-gray-600 sm:text-base">{blog.excerpt}</p>
+
+        <div className="mb-4 flex flex-wrap items-center gap-3 text-xs text-gray-500 sm:text-sm">
+          <span className="flex items-center gap-1">
+            <User size={14} />
+            {blog.author}
+          </span>
+          <span className="flex items-center gap-1">
+            <Calendar size={14} />
+            {blog.date}
+          </span>
+        </div>
+
+        <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary-teal group-hover:gap-3 transition-all">
+          Read More
+          <ArrowRight size={16} />
+        </span>
+      </div>
+    </article>
   );
 
   return (
-    <FadeInSection className="py-12 bg-luxury-canvas">
+    <FadeInSection className="bg-luxury-canvas py-12">
       <Container>
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-luxury-darkBlue mb-4">BLOGS</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div className="mb-8 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-luxury-darkBlue md:text-4xl">BLOGS</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">
             Latest travel insights and tips from our experts
           </p>
         </div>
 
-        <ContentShuffleStack
-          items={blogs}
-          renderItem={renderBlogCard}
-          intervalMs={BLOG_INTERVAL_MS}
-          maxWidthClass="max-w-2xl"
-          stackMinHeightClass="min-h-[min(480px,62vh)]"
-        />
+        <BlogCarousel items={blogs} getKey={(b) => b.id} renderItem={(blog) => renderBlogCard(blog)} />
+
+        <p className="mt-4 text-center text-sm text-gray-500 md:hidden">Swipe to see more posts</p>
       </Container>
     </FadeInSection>
   );

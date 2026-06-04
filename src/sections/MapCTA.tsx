@@ -6,26 +6,25 @@ import Button from '../components/Button';
 import ConsultationModal from '../components/ConsultationModal';
 import { FadeInSection } from '../components/FadeInSection';
 
-/** Pluto Travels LLC Dubai — Prism Tower, Business Bay (matches Google Maps place). */
-const PLUTO_DUBAI_MAPS_PLACE_URL =
-  'https://www.google.com/maps/place/Pluto+Travels+LLC+Dubai/@25.1873455,55.2598099,18.77z/data=!4m6!3m5!1s0x3e5f4314df2d91b9:0xc4d4a502001393c9!8m2!3d25.1874761!4d55.2611572!16s%2Fg%2F11bbwr4pbz?hl=en-US&entry=ttu';
+import { SITE } from '../lib/siteConfig';
 
 const PLUTO_DUBAI_MAP_EMBED_URL =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.5!2d55.2611572!3d25.1874761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4314df2d91b9%3A0xc4d4a502001393c9!2sPluto%20Travels%20LLC%20Dubai!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2s';
 
 const MapCTA: React.FC = () => {
   const [consultOpen, setConsultOpen] = useState(false);
-  
+
   const contactInfo = [
-    { icon: Phone, title: 'Call Us', value: '+971 50 911 0065', link: 'tel:+971509110065' },
-    { icon: Mail, title: 'Email', value: 'sales@plutotravels.ae', link: 'mailto:sales@plutotravels.ae' },
+    { icon: Phone, title: 'Office', value: SITE.phoneOfficeDisplay, link: `tel:${SITE.phoneOffice}` },
+    { icon: Phone, title: 'Mobile / WhatsApp', value: SITE.phoneMobileDisplay, link: `tel:${SITE.phoneMobile}` },
+    { icon: Mail, title: 'Email', value: SITE.email, link: `mailto:${SITE.email}` },
     {
       icon: MapPin,
-      title: 'Visit Us',
-      value: 'Dubai, United Arab Emirates',
-      link: PLUTO_DUBAI_MAPS_PLACE_URL,
+      title: 'Business Bay Office',
+      value: SITE.address.streetAddress,
+      link: SITE.googleMapsUrl,
     },
-    { icon: Clock, title: 'Hours', value: '24/7 Support Available', link: '#' },
+    { icon: Clock, title: 'Hours', value: '24/7 Support Available', link: '/travel-agency-business-bay-dubai' },
   ];
 
   return (
@@ -39,10 +38,10 @@ const MapCTA: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-luxury-darkBlue mb-6">
-              Why Online Travel Booking is More Popular Than Ever in 2026
+              Visit Our Travel Agency in Business Bay, Dubai
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Plan your dream vacation anytime, anywhere! Our platform offers unbeatable flexibility, competitive prices, and 24/7 support to make your travel experience effortless and stress-free.
+              IATA-accredited since 2007 — corporate travel, MICE, luxury concierge & visa services from {SITE.address.streetAddress}. {SITE.aggregateRating.reviewCount} Google reviews at {SITE.aggregateRating.ratingValue}★.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
