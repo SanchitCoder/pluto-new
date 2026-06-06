@@ -48,6 +48,14 @@ const Awards2025: React.FC = () => {
     },
   ];
 
+  const rakPoliceAward: Award = {
+    id: '7',
+    image: '/awards/ras-al-khaimah-police-award.jpeg',
+    title: 'Awarded by Ras Al Khaimah Police',
+    description:
+      'Pluto Travels honoured by Ras Al Khaimah Police for excellence in travel services and community partnership',
+  };
+
   const martechAward: Award = {
     id: '6',
     image: '/awards/MartechAwards.jpeg',
@@ -55,7 +63,7 @@ const Awards2025: React.FC = () => {
     description: 'Awarded at MarTech Leadership Summit & Awards 2026',
   };
 
-  const sliderItems: Award[] = [...awards, martechAward];
+  const sliderItems: Award[] = [rakPoliceAward, ...awards, martechAward];
 
   const awardCardClass =
     'group flex h-full min-h-0 flex-col bg-white rounded-xl shadow-lg shadow-gray-900/10 ring-1 ring-gray-200/80';
