@@ -19,6 +19,76 @@ const BlogSection: React.FC = () => {
 
   const blogs: BlogCardData[] = [
     {
+      id: 'best-eid-staycation-deals-uae-2026',
+      image: '/eid-al-fitr-deals.gif',
+      title: 'Best Eid Staycation Deals in the UAE',
+      excerpt:
+        'Top Eid staycation packages in the UAE for 2026 — Fujairah, Abu Dhabi, Dubai, and Ras Al Khaimah resorts with beach access, family perks, and great value.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Destinations',
+    },
+    {
+      id: 'plan-unforgettable-luxury-celebrations-corporate-events-2026',
+      image: '/mice-events-conference.png',
+      title: 'How to Plan Unforgettable Luxury Celebrations & Corporate Events in 2026',
+      excerpt:
+        'From milestone birthdays to corporate galas and incentive trips — how Pluto Travels & Pluto Events create luxury celebrations and MICE experiences in the UAE.',
+      author: 'Corporate Team',
+      date: 'Jun 5, 2026',
+      category: 'MICE & Events',
+    },
+    {
+      id: '7-common-travel-booking-mistakes-how-to-avoid',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80',
+      title: '7 Common Travel Booking Mistakes and How to Avoid Them',
+      excerpt:
+        'Avoid the seven booking mistakes that cause missed flights, visa issues, and extra costs — expert tips for stress-free travel from Dubai and the UAE.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Travel Tips',
+    },
+    {
+      id: 'what-happens-if-you-miss-your-flight-travel-guide',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      title: 'What Happens If You Miss Your Flight? Complete Guide for Travelers',
+      excerpt:
+        'Missed your flight? Stay calm and act fast — rebooking options, ticket types, costs, insurance, and how to avoid missing flights from Dubai and the UAE.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Travel Tips',
+    },
+    {
+      id: 'luxury-travel-trends-2026-experiences-over-hotel-stays',
+      image: 'https://images.unsplash.com/photo-1540541338287-41700907dda6?w=800&q=80',
+      title: 'Luxury Travel Trends 2026: Why Experiences Are Replacing Traditional Hotel Stays',
+      excerpt:
+        'How luxury travel is shifting from five-star stays to curated experiences — personalization, private dining, yacht escapes, and what HNI travellers value in 2026.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Luxury Travel',
+    },
+    {
+      id: 'how-to-find-cheap-flights-without-sacrificing-comfort',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      title: 'How to Find Cheap Flights Without Sacrificing Comfort: Proven Tips to Save Money on Airfare',
+      excerpt:
+        'Practical strategies to find affordable flights from the UAE without rough travel — timing, flexibility, smart search, hidden fees, and when expert help saves more.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Travel Tips',
+    },
+    {
+      id: 'best-luxury-staycation-fujairah-48-hour-escape',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+      title: 'Best Luxury Staycation in Fujairah: Your Perfect 48-Hour Escape',
+      excerpt:
+        'Discover Fujairah — the UAE\'s underrated luxury staycation. Beachfront resorts, mountain views, diving, wellness, and a complete 48-hour itinerary from Dubai.',
+      author: 'Travel Team',
+      date: 'Jun 5, 2026',
+      category: 'Destinations',
+    },
+    {
       id: 'corporate-travel-policy-guide-uae-companies',
       image: '/corporate-travel-management.png',
       title: 'Corporate Travel Policy Guide for UAE Companies (2026)',

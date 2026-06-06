@@ -212,6 +212,55 @@ export const SEO_ROUTES: Record<string, SeoRouteConfig> = {
     description: 'Thank you for contacting Pluto Travels.',
     noindex: true,
   },
+  '/blog/best-eid-staycation-deals-uae-2026': {
+    title: 'Best Eid Staycation Deals in the UAE (2026) | Pluto Travels',
+    description:
+      'Top Eid staycation hotel deals in the UAE — Fujairah, Abu Dhabi, Dubai & RAK resorts with beach access, family packages, and booking tips for 2026.',
+    keywords: 'Eid staycation UAE, Eid hotel deals Dubai, Eid packages Abu Dhabi, UAE holiday deals 2026',
+    ogType: 'article',
+  },
+  '/blog/plan-unforgettable-luxury-celebrations-corporate-events-2026': {
+    title: 'Plan Luxury Celebrations & Corporate Events in 2026 | Pluto Travels & Events',
+    description:
+      'Plan unforgettable luxury celebrations and corporate events in the UAE — milestone parties, MICE, team building, incentive trips, and end-to-end event management.',
+    keywords: 'luxury celebrations Dubai, corporate events UAE, MICE planning 2026, incentive travel Dubai',
+    ogType: 'article',
+  },
+  '/blog/7-common-travel-booking-mistakes-how-to-avoid': {
+    title: '7 Common Travel Booking Mistakes and How to Avoid Them | Pluto Travels',
+    description:
+      'Avoid costly travel booking mistakes — late bookings, visa errors, cheap fares, no insurance, and more. Expert tips for stress-free travel from the UAE.',
+    keywords: 'travel booking mistakes, travel planning tips UAE, avoid travel errors Dubai',
+    ogType: 'article',
+  },
+  '/blog/what-happens-if-you-miss-your-flight-travel-guide': {
+    title: 'What Happens If You Miss Your Flight? Complete Guide | Pluto Travels',
+    description:
+      'Missed your flight from Dubai or the UAE? Step-by-step rebooking guide — airline policies, ticket types, costs, insurance, and 24/7 travel support.',
+    keywords: 'missed flight what to do, missed flight Dubai, flight rebooking UAE, travel emergency',
+    ogType: 'article',
+  },
+  '/blog/luxury-travel-trends-2026-experiences-over-hotel-stays': {
+    title: 'Luxury Travel Trends 2026: Experiences Over Hotel Stays | Pluto Travels',
+    description:
+      'Why HNI travellers in 2026 choose curated experiences over traditional luxury hotels — personalization, private dining, yacht travel, and Dubai\'s role in experiential luxury.',
+    keywords: 'luxury travel trends 2026, experiential travel Dubai, high-end travel experiences UAE',
+    ogType: 'article',
+  },
+  '/blog/how-to-find-cheap-flights-without-sacrificing-comfort': {
+    title: 'How to Find Cheap Flights Without Sacrificing Comfort | Pluto Travels UAE',
+    description:
+      'Proven tips to save on airfare from the UAE without rough travel — booking timing, flexible routes, hidden fees, comfort hacks, and expert flight deals.',
+    keywords: 'cheap flights Dubai, affordable flights UAE, save money on airfare, flight booking tips',
+    ogType: 'article',
+  },
+  '/blog/best-luxury-staycation-fujairah-48-hour-escape': {
+    title: 'Best Luxury Staycation in Fujairah: Your Perfect 48-Hour Escape | Pluto Travels',
+    description:
+      'Complete Fujairah luxury staycation guide — top resorts, 48-hour itinerary, diving, wellness, best time to visit, and how to escape from Dubai in under 2 hours.',
+    keywords: 'Fujairah staycation, luxury staycation UAE, Fujairah resorts, weekend escape from Dubai',
+    ogType: 'article',
+  },
   '/blog/corporate-travel-policy-guide-uae-companies': {
     title: 'Corporate Travel Policy Guide for UAE Companies (2026) | Pluto Travels',
     description:
