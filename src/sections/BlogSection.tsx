@@ -19,6 +19,36 @@ const BlogSection: React.FC = () => {
 
   const blogs: BlogCardData[] = [
     {
+      id: 'why-business-trips-more-expensive-2026-guide-uae-companies',
+      image: '/Globla-business-solutiona.png',
+      title: 'Why Are Business Trips Becoming More Expensive in 2026? A Guide for UAE Companies',
+      excerpt:
+        'Why business travel costs are rising in 2026 — airfare, fuel, hotel rates and capacity — and how UAE companies can control spend with better policy, planning and reporting.',
+      author: 'Corporate Team',
+      date: 'Sep 12, 2026',
+      category: 'Corporate Travel',
+    },
+    {
+      id: 'how-to-choose-corporate-travel-agency-dubai-10-questions',
+      image: '/business-analytics-suite.png',
+      title: 'How to Choose the Right Corporate Travel Agency in Dubai: 10 Questions to Ask',
+      excerpt:
+        'The 10 questions every UAE company should ask before signing with a corporate travel agency in Dubai — support, technology, cost control, reporting, and duty of care.',
+      author: 'Corporate Team',
+      date: 'Sep 11, 2026',
+      category: 'Corporate Travel',
+    },
+    {
+      id: 'schengen-visa-rejection-reasons-common-mistakes',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      title: 'Schengen Visa Rejection Reasons: 15 Common Mistakes and How to Avoid Them',
+      excerpt:
+        'The 15 most common reasons Schengen visa applications get refused — financial proof, unexplained deposits, weak itineraries, and insurance gaps — and how to avoid them.',
+      author: 'Travel Team',
+      date: 'Sep 10, 2026',
+      category: 'Visa & Travel',
+    },
+    {
       id: 'best-eid-staycation-deals-uae-2026',
       image: '/eid-al-fitr-deals.gif',
       title: 'Best Eid Staycation Deals in the UAE',

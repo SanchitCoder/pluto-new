@@ -212,6 +212,27 @@ export const SEO_ROUTES: Record<string, SeoRouteConfig> = {
     description: 'Thank you for contacting Pluto Travels.',
     noindex: true,
   },
+  '/blog/why-business-trips-more-expensive-2026-guide-uae-companies': {
+    title: 'Why Are Business Trips Becoming More Expensive in 2026? | Pluto Travels',
+    description:
+      'Why business travel costs are rising in 2026 — airfare, fuel, hotel rates and airline capacity — and how UAE companies can control spend with policy, planning and reporting.',
+    keywords: 'business travel costs 2026, corporate travel budget UAE, business travel expensive, corporate travel management Dubai',
+    ogType: 'article',
+  },
+  '/blog/how-to-choose-corporate-travel-agency-dubai-10-questions': {
+    title: 'How to Choose a Corporate Travel Agency in Dubai: 10 Questions | Pluto Travels',
+    description:
+      'The 10 questions to ask before choosing a corporate travel agency in Dubai — support, disruption handling, booking platforms, cost control, reporting and duty of care.',
+    keywords: 'corporate travel agency Dubai, business travel agency UAE, corporate travel management company Dubai',
+    ogType: 'article',
+  },
+  '/blog/schengen-visa-rejection-reasons-common-mistakes': {
+    title: 'Schengen Visa Rejection Reasons: 15 Common Mistakes | Pluto Travels',
+    description:
+      'The 15 most common Schengen visa rejection reasons — financial proof, unexplained deposits, weak itineraries, insurance gaps — and how to avoid them. Guide from Pluto Travels.',
+    keywords: 'Schengen visa rejection reasons, Schengen visa refused, Schengen visa mistakes, Schengen visa application UAE',
+    ogType: 'article',
+  },
   '/blog/best-eid-staycation-deals-uae-2026': {
     title: 'Best Eid Staycation Deals in the UAE (2026) | Pluto Travels',
     description:
