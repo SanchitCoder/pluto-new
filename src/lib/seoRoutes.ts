@@ -197,6 +197,13 @@ export const SEO_ROUTES: Record<string, SeoRouteConfig> = {
       'Structured group travel and corporate solutions from Dubai. 17+ years expertise, dedicated account management & global network. Request a consultation.',
     keywords: 'corporate group travel Dubai, business travel solutions UAE',
   },
+  '/travel-consultation': {
+    title: 'Luxury Travel, Corporate Travel & Visa Assistance Dubai | Pluto Travels',
+    description:
+      'Travel, handled better. Book a 1:1 consultation with Dubai-based travel specialists for luxury holidays, corporate travel management and visa assistance. Pluto Travels LLC.',
+    keywords:
+      'luxury holidays Dubai, corporate travel Dubai, visa assistance Dubai, travel consultation Dubai, travel agency Dubai',
+  },
   '/crisis': {
     title: 'Emergency Travel Assistance | Pluto Travels Dubai',
     description: 'Emergency flight and travel support during regional disruptions. Pluto Travels Dubai — 24/7 assistance.',

@@ -25,6 +25,7 @@ import VisaDetailPage from './pages/VisaDetailPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsAndConditionsPage from './pages/TermsAndConditionsPage';
 import BusinessLandingPage from './pages/BusinessLandingPage';
+import TravelConsultationLandingPage from './pages/TravelConsultationLandingPage';
 import LuxuryTravelPage from './pages/LuxuryTravelPage';
 import CrisisLandingPage from './pages/CrisisLandingPage';
 import CrisisFormPage from './pages/CrisisFormPage';
@@ -72,6 +73,7 @@ function AppContent() {
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
           <Route path="/business-landing" element={<BusinessLandingPage />} />
+          <Route path="/travel-consultation" element={<TravelConsultationLandingPage />} />
           <Route path="/crisis" element={<CrisisLandingPage />} />
           <Route path="/crisis/form" element={<CrisisFormPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />

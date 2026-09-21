@@ -23,6 +23,7 @@ export const SITEMAP_ROUTES: string[] = [
   '/privacy-policy',
   '/terms-and-conditions',
   '/business-landing',
+  '/travel-consultation',
   '/travel-agency-business-bay-dubai',
   '/corporate-travel-energy',
   '/marine-crew-travel-dubai',
