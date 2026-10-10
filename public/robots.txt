@@ -7,4 +7,4 @@ Allow: /crisis/form
 
 Disallow: /thank-you
 
-Sitemap: https://plutotravels.ae/sitemap.xml
+Sitemap: https://www.plutotravels.ae/sitemap.xml

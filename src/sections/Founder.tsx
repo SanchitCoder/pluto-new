@@ -38,8 +38,8 @@ const Founder: React.FC = () => {
             className="lg:col-span-2"
           >
             <div className="relative">
-              <img
-                src="/Bharat-New-Web.png"
+              <img loading="lazy" decoding="async"
+                src="/Bharat-New-Web.webp"
                 alt="Bharat Aidasani, Founder"
                 className="w-full rounded-2xl shadow-2xl"
               />

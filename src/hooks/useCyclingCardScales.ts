@@ -11,10 +11,27 @@ export const cardZoomScaleTransition = {
   ease: [0.4, 0, 0.2, 1] as const,
 };
 
+/** How long after the last scroll event the page counts as "still scrolling". */
+const SCROLL_CALM_MS = 220;
+
+let lastScrollAt = 0;
+if (typeof window !== 'undefined') {
+  window.addEventListener(
+    'scroll',
+    () => {
+      lastScrollAt = Date.now();
+    },
+    { passive: true }
+  );
+}
+
 /**
  * Cycles which card in a row is “emphasized” with a subtle scale pulse (Client Reviews pattern).
+ *
+ * Each step re-renders the calling component, so steps are deferred while the user is scrolling,
+ * the tab is hidden, or `enabled` is false — otherwise this background work competes with scrolling.
  */
-export function useCyclingCardScales(count: number): number[] {
+export function useCyclingCardScales(count: number, enabled = true): number[] {
   const prefersReducedMotion = useReducedMotion();
   const [scales, setScales] = useState<number[]>(() => Array.from({ length: count }, () => 1));
 
@@ -23,29 +40,30 @@ export function useCyclingCardScales(count: number): number[] {
       setScales(Array.from({ length: count }, () => 1));
       return;
     }
+    if (!enabled) return;
 
     let cancelled = false;
     const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+    const untilCalm = async () => {
+      while (!cancelled && (document.hidden || Date.now() - lastScrollAt < SCROLL_CALM_MS)) {
+        await sleep(120);
+      }
+    };
+    const only = (index: number) => Array.from({ length: count }, (_, i) => (i === index ? CARD_ZOOM_SCALE : 1));
 
     const run = async () => {
-      const first = Array.from({ length: count }, () => 1);
-      first[0] = CARD_ZOOM_SCALE;
-      setScales(first);
-      await sleep(CARD_ZOOM_DURATION_MS);
+      await untilCalm();
       if (cancelled) return;
-      await sleep(CARD_ZOOM_HOLD_MS);
-      if (cancelled) return;
+      setScales(only(0));
+      await sleep(CARD_ZOOM_DURATION_MS + CARD_ZOOM_HOLD_MS);
 
       let i = 0;
       while (!cancelled) {
+        await untilCalm();
+        if (cancelled) break;
         const next = (i + 1) % count;
-        const nextScales = Array.from({ length: count }, () => 1);
-        nextScales[next] = CARD_ZOOM_SCALE;
-        setScales(nextScales);
-        await sleep(CARD_ZOOM_DURATION_MS);
-        if (cancelled) break;
-        await sleep(CARD_ZOOM_HOLD_MS);
-        if (cancelled) break;
+        setScales(only(next));
+        await sleep(CARD_ZOOM_DURATION_MS + CARD_ZOOM_HOLD_MS);
         i = next;
       }
     };
@@ -53,8 +71,9 @@ export function useCyclingCardScales(count: number): number[] {
     run();
     return () => {
       cancelled = true;
+      setScales(Array.from({ length: count }, () => 1));
     };
-  }, [prefersReducedMotion, count]);
+  }, [prefersReducedMotion, count, enabled]);
 
   if (prefersReducedMotion) {
     return Array.from({ length: count }, () => 1);

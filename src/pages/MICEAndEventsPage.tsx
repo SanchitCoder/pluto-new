@@ -50,7 +50,7 @@ const MICEAndEventsPage: React.FC = () => {
       description: 'Corporate meetings, board meetings, and executive gatherings.',
       icon: Users,
       features: ['Conference Rooms', 'AV Equipment', 'Catering', 'Transportation'],
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=70'
     },
     {
       id: 'incentives',
@@ -58,7 +58,7 @@ const MICEAndEventsPage: React.FC = () => {
       description: 'Reward programs and motivational trips for high-performing teams.',
       icon: Award,
       features: ['Luxury Accommodations', 'Unique Experiences', 'Team Building', 'Recognition Programs'],
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=70'
     },
     {
       id: 'conferences',
@@ -66,7 +66,7 @@ const MICEAndEventsPage: React.FC = () => {
       description: 'Large-scale conferences and industry events with multiple sessions.',
       icon: Calendar,
       features: ['Multiple Venues', 'Speaker Management', 'Registration', 'Networking Events'],
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'
     },
     {
       id: 'exhibitions',
@@ -74,7 +74,7 @@ const MICEAndEventsPage: React.FC = () => {
       description: 'Trade shows, product launches, and exhibition management.',
       icon: Star,
       features: ['Booth Design', 'Logistics', 'Visitor Management', 'Marketing Support'],
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70'
     }
   ];
 
@@ -129,7 +129,7 @@ const MICEAndEventsPage: React.FC = () => {
       name: 'Dubai International Convention Centre',
       location: 'Dubai, UAE',
       capacity: 'Up to 10,000 delegates',
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=70',
       features: ['Multiple Halls', 'AV Equipment', 'Catering Facilities', 'Parking'],
       rating: 4.8
     },
@@ -138,7 +138,7 @@ const MICEAndEventsPage: React.FC = () => {
       name: 'Abu Dhabi National Exhibition Centre',
       location: 'Abu Dhabi, UAE',
       capacity: 'Up to 15,000 delegates',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70',
       features: ['Exhibition Halls', 'Meeting Rooms', 'Restaurant', 'Business Center'],
       rating: 4.7
     },
@@ -147,7 +147,7 @@ const MICEAndEventsPage: React.FC = () => {
       name: 'Sharjah Expo Centre',
       location: 'Sharjah, UAE',
       capacity: 'Up to 8,000 delegates',
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=70',
       features: ['Conference Facilities', 'Exhibition Space', 'Catering', 'Transportation'],
       rating: 4.6
     }
@@ -174,7 +174,7 @@ const MICEAndEventsPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -286,7 +286,7 @@ const MICEAndEventsPage: React.FC = () => {
                     <div className="client-review-shimmer-ring" aria-hidden />
                     <div className="relative z-10 m-[2px] rounded-[calc(1.5rem-2px)] bg-white overflow-hidden transition-transform duration-500 ease-out group-hover:translate-y-[-2px] border border-gray-100/80 flex flex-col h-full">
                       <div className="relative h-48 overflow-hidden shrink-0">
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={eventType.image}
                           alt={eventType.name}
                           className="w-full h-full object-cover"
@@ -423,7 +423,7 @@ const MICEAndEventsPage: React.FC = () => {
                     <div className="client-review-shimmer-ring" aria-hidden />
                     <div className="relative z-10 m-[2px] rounded-[calc(1.5rem-2px)] bg-white overflow-hidden transition-transform duration-500 ease-out group-hover:translate-y-[-2px] border border-gray-100/80 flex flex-col h-full">
                       <div className="relative h-48 overflow-hidden shrink-0">
-                        <img src={venue.image} alt={venue.name} className="w-full h-full object-cover" />
+                        <img loading="lazy" decoding="async" src={venue.image} alt={venue.name} className="w-full h-full object-cover" />
                         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-primary-navy">
                           {venue.rating} ⭐
                         </div>

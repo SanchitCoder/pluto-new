@@ -44,24 +44,9 @@ const LunaAIChatButton: React.FC = () => {
             <span className="luna-ai-fab-shell">
               <span className="luna-ai-fab-spin" aria-hidden />
               <span className="relative z-10 flex items-center gap-2 rounded-full bg-gradient-to-b from-[#E3E3E4] via-[#D8D7D8] to-[#C0BFBE] px-3.5 py-2 pl-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),inset_0_-1px_0_rgba(0,0,0,0.06)] sm:gap-2.5 sm:px-5 sm:py-2.5 sm:pl-3">
-                <motion.span
-                  className="inline-flex text-black"
-                  animate={
-                    prefersReducedMotion
-                      ? undefined
-                      : {
-                          scale: [1, 1.18, 1],
-                          opacity: [0.85, 1, 0.85],
-                        }
-                  }
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                >
+                <span className="luna-ai-star inline-flex text-black">
                   <FourPointStar size={10} />
-                </motion.span>
+                </span>
                 <span className="select-none text-sm font-extrabold tracking-[0.14em] text-black sm:text-[0.95rem]">
                   AI
                 </span>

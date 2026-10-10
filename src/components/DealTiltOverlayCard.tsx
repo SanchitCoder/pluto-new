@@ -262,14 +262,14 @@ export const DealTiltOverlayCard: React.FC<DealTiltOverlayCardProps> = ({
         role="article"
         aria-label={`${title} — hover or focus for details`}
       >
-        <img
+        <img decoding="async"
           className="card__image"
           src={imageSrc}
           alt={imageAlt}
           loading="lazy"
           onError={(e) => {
             (e.target as HTMLImageElement).src =
-              'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80';
+              'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=70';
           }}
         />
         <div className="card__gradient" aria-hidden />

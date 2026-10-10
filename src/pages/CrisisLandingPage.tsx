@@ -15,10 +15,10 @@ import { FadeInSection } from '../components/FadeInSection';
  */
 
 // Crisis landing page images (served from public folder for production)
-const IMAGE_1 = '/crisis-image-1.jpeg'; // Aircraft sunset – "Flight Tickets Available Now"
-const IMAGE_2 = '/crisis-image-2.jpeg'; // US–Israel–Iran escalation / UAE airline cancellations
-const IMAGE_3 = '/crisis-image-3.jpeg'; // Charter services / airport scene
-const IMAGE_4 = '/crisis-image-4.jpeg'; // Emergency Contact Creative
+const IMAGE_1 = '/crisis-image-1.webp'; // Aircraft sunset – "Flight Tickets Available Now"
+const IMAGE_2 = '/crisis-image-2.webp'; // US–Israel–Iran escalation / UAE airline cancellations
+const IMAGE_3 = '/crisis-image-3.webp'; // Charter services / airport scene
+const IMAGE_4 = '/crisis-image-4.webp'; // Emergency Contact Creative
 
 // Stock plane/aviation backgrounds (Unsplash, free to use)
 const BG_HERO = 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=80'; // airplane wing / sky (hero only)
@@ -140,7 +140,7 @@ export default function CrisisLandingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full max-w-full lg:max-w-2xl aspect-video lg:aspect-auto lg:h-[80vh] rounded-lg sm:rounded-xl overflow-hidden shadow-xl sm:shadow-2xl flex items-center justify-center bg-white/50"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={IMAGE_1}
               alt="Emergency flights and travel assistance"
               className="w-full h-full object-contain max-w-full max-h-full"
@@ -159,7 +159,7 @@ export default function CrisisLandingPage() {
               viewport={{ once: true }}
               className="relative aspect-video rounded-lg sm:rounded-xl overflow-hidden bg-primary-navy/10 flex items-center justify-center order-2 lg:order-1"
             >
-              <img src={IMAGE_2} alt="UAE airline disruptions" className="w-full h-full object-contain" />
+              <img loading="lazy" decoding="async" src={IMAGE_2} alt="UAE airline disruptions" className="w-full h-full object-contain" />
             </motion.div>
             <div className="order-1 lg:order-2">
               <h2 className="text-lg sm:text-2xl lg:text-4xl font-bold text-primary-navy mb-3 sm:mb-6 leading-tight">
@@ -231,7 +231,7 @@ export default function CrisisLandingPage() {
               viewport={{ once: true }}
               className="relative aspect-video rounded-lg sm:rounded-xl overflow-hidden bg-primary-teal/10 order-1 lg:order-2 flex items-center justify-center"
             >
-              <img src={IMAGE_3} alt="Charter travel options" className="w-full h-full object-contain" />
+              <img loading="lazy" decoding="async" src={IMAGE_3} alt="Charter travel options" className="w-full h-full object-contain" />
             </motion.div>
           </div>
         </Container>
@@ -247,7 +247,7 @@ export default function CrisisLandingPage() {
               viewport={{ once: true }}
               className="relative aspect-video rounded-lg sm:rounded-xl overflow-hidden bg-white/10 flex items-center justify-center order-2 lg:order-1"
             >
-              <img src={IMAGE_4} alt="24/7 Emergency support" className="w-full h-full object-contain" />
+              <img loading="lazy" decoding="async" src={IMAGE_4} alt="24/7 Emergency support" className="w-full h-full object-contain" />
             </motion.div>
             <div className="order-1 lg:order-2">
               <h2 className="text-lg sm:text-2xl lg:text-4xl font-bold text-white mb-3 sm:mb-6 leading-tight">

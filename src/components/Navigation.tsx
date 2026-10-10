@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -117,11 +117,21 @@ const Navigation: React.FC = () => {
               >
                 Luxury Travel
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/blog"
                 className={`${linkUnderline} transition-colors font-medium whitespace-nowrap text-xs xl:text-sm flex-shrink-0 px-3 xl:px-4 py-2.5 rounded-lg tracking-tight ${
-                  location.pathname === '/contact' 
-                    ? 'text-accent-gold after:scale-x-100' 
+                  location.pathname.startsWith('/blog')
+                    ? 'text-accent-gold after:scale-x-100'
+                    : 'text-white/95 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                Blog
+              </Link>
+              <Link
+                to="/contact"
+                className={`${linkUnderline} transition-colors font-medium whitespace-nowrap text-xs xl:text-sm flex-shrink-0 px-3 xl:px-4 py-2.5 rounded-lg tracking-tight ${
+                  location.pathname === '/contact'
+                    ? 'text-accent-gold after:scale-x-100'
                     : 'text-white/95 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -653,11 +663,23 @@ const Navigation: React.FC = () => {
                   <Award size={18} className="sm:w-5 sm:h-5 flex-shrink-0" />
                   <span>Luxury Travel</span>
                 </Link>
-                <Link 
-                  to="/contact" 
+                <Link
+                  to="/blog"
                   className={`flex items-center gap-2 sm:gap-3 text-base sm:text-lg font-medium py-2 sm:py-2.5 px-2 rounded-lg hover:bg-white/10 transition-colors ${
-                    location.pathname === '/contact' 
-                      ? 'text-accent-gold' 
+                    location.pathname.startsWith('/blog')
+                      ? 'text-accent-gold'
+                      : 'text-white'
+                  }`}
+                  onClick={closeMobileMenu}
+                >
+                  <FileText size={18} className="sm:w-5 sm:h-5 flex-shrink-0" />
+                  <span>Blog</span>
+                </Link>
+                <Link
+                  to="/contact"
+                  className={`flex items-center gap-2 sm:gap-3 text-base sm:text-lg font-medium py-2 sm:py-2.5 px-2 rounded-lg hover:bg-white/10 transition-colors ${
+                    location.pathname === '/contact'
+                      ? 'text-accent-gold'
                       : 'text-white'
                   }`}
                   onClick={closeMobileMenu}

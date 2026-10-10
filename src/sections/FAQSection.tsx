@@ -35,7 +35,7 @@ const FAQSection: React.FC = () => {
   ];
 
   return (
-    <FadeInSection className="py-16 bg-luxury-pearl">
+    <FadeInSection className="py-16 bg-luxury-pearl cv-auto">
       <Container>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-luxury-darkBlue mb-4">

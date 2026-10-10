@@ -11,27 +11,27 @@ const ServiceTiles: React.FC = () => {
       id: 'business-travel',
       title: 'Business Travel Solutions',
       description: 'Streamlined corporate travel management for modern enterprises',
-      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=70',
       link: '/business-travel'
     },
     {
       id: 'corporate-events',
       title: 'Corporate Events Travel',
       description: 'We save your time and money with expert event travel coordination',
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=70',
       link: '/corporate-events'
     },
     {
       id: 'first-class',
       title: 'First Class Travel',
       description: 'Luxury travel experiences for discerning corporate executives',
-      image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=70',
       link: '/first-class-travel'
     }
   ];
 
   return (
-    <FadeInSection className="py-16 bg-luxury-canvas">
+    <FadeInSection className="py-16 bg-luxury-canvas cv-auto">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,7 +60,7 @@ const ServiceTiles: React.FC = () => {
             >
               <Link to={service.link} className="block">
                 <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover"

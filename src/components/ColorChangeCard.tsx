@@ -21,7 +21,7 @@ export const ColorChangeCard: React.FC<ColorChangeCardProps> = ({
 
       <div className="absolute inset-[5px] z-10 flex flex-col overflow-hidden rounded-[calc(0.5rem-5px)] sm:rounded-[calc(0.75rem-5px)]">
         <div className="absolute inset-0">
-          <img
+          <img loading="lazy" decoding="async"
             src={imageUrl}
             alt=""
             className="h-full w-full origin-center object-cover transition-transform duration-500 ease-out group-hover:scale-[1.8]"

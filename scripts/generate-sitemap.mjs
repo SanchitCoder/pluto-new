@@ -1,71 +1,38 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE = 'https://plutotravels.ae';
+const SITE = 'https://www.plutotravels.ae';
 
-/** Keep in sync with src/data/sitemapRoutes.ts */
-const routes = [
-  '/',
-  '/destinations',
-  '/contact',
-  '/corporate',
-  '/corporate-travel',
-  '/corporate-travel-dubai',
-  '/mice',
-  '/mice-dubai',
-  '/industries',
-  '/personal',
-  '/platinum',
-  '/luxury-travel',
-  '/luxury-travel-dubai',
-  '/holidays',
-  '/services',
-  '/business-travel',
-  '/corporate-events',
-  '/first-class-travel',
-  '/visa/africa',
-  '/visa-services-dubai',
-  '/privacy-policy',
-  '/terms-and-conditions',
-  '/business-landing',
-  '/travel-consultation',
-  '/travel-agency-business-bay-dubai',
-  '/corporate-travel-energy',
-  '/marine-crew-travel-dubai',
-  '/mining-sector-travel',
-  '/sports-team-travel',
-  '/qatar-visa-from-dubai',
-  '/bishkek-holiday-packages-dubai',
-  '/group-travel-booking-dubai',
-  '/blog/why-business-trips-more-expensive-2026-guide-uae-companies',
-  '/blog/how-to-choose-corporate-travel-agency-dubai-10-questions',
-  '/blog/schengen-visa-rejection-reasons-common-mistakes',
-  '/blog/best-eid-staycation-deals-uae-2026',
-  '/blog/plan-unforgettable-luxury-celebrations-corporate-events-2026',
-  '/blog/7-common-travel-booking-mistakes-how-to-avoid',
-  '/blog/what-happens-if-you-miss-your-flight-travel-guide',
-  '/blog/luxury-travel-trends-2026-experiences-over-hotel-stays',
-  '/blog/how-to-find-cheap-flights-without-sacrificing-comfort',
-  '/blog/best-luxury-staycation-fujairah-48-hour-escape',
-  '/blog/top-european-destinations-schengen-visa-guide-pluto-travels',
-  '/blog/why-uae-companies-switching-corporate-travel-management-2026',
-  '/blog/corporate-travel-policy-guide-uae-companies',
-  '/blog/mice-dubai-planners-guide-2026',
-  '/blog/best-time-plan-corporate-incentive-trips-uae',
-  '/blog/experiencing-ramadan-in-the-uae-customs-tips-travel-guide',
-  '/blog/top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
-  '/blog/ultimate-travel-guide-best-things-to-do-dubai-2026',
-  '/blog/uae-resilience-in-action-navigating-regional-challenges',
-  '/blog/eid-al-fitr-travel-top-destinations-2026',
-  '/blog/5-unique-corporate-team-building-ideas-that-actually-work',
-  '/blog/best-affordable-travel-destinations-2026',
-  '/blog/corporate-travel-management-best-practices-2026-part1',
-  '/blog/corporate-travel-management-best-practices-2026-part2',
-];
+/**
+ * Routes are read directly from src/data/sitemapRoutes.ts (the single source of truth also used by
+ * the prerender script) instead of a second hardcoded list — a duplicated list previously drifted out
+ * of sync and silently dropped a published blog post from the sitemap.
+ */
+function loadRoutes() {
+  const tsSource = readFileSync(path.resolve(__dirname, '../src/data/sitemapRoutes.ts'), 'utf8');
+  const match = tsSource.match(/SITEMAP_ROUTES:\s*string\[\]\s*=\s*\[([\s\S]*?)\n\];/);
+  if (!match) {
+    throw new Error('[sitemap] Could not find SITEMAP_ROUTES array in src/data/sitemapRoutes.ts');
+  }
+  const routes = [...match[1].matchAll(/'([^']+)'/g)].map((m) => m[1]);
+  if (routes.length === 0) {
+    throw new Error('[sitemap] Parsed zero routes from src/data/sitemapRoutes.ts — check the regex still matches.');
+  }
+  return routes;
+}
+
+const routes = loadRoutes();
 
 const today = new Date().toISOString().split('T')[0];
+
+const priorityFor = (route) => {
+  if (route === '/') return '1.0';
+  if (route.startsWith('/blog/') || route.startsWith('/package/') || route.startsWith('/mice/')) return '0.6';
+  if (route.startsWith('/visa/')) return '0.7';
+  return '0.8';
+};
 
 const urls = routes
   .map(
@@ -73,7 +40,7 @@ const urls = routes
     <loc>${SITE}${route === '/' ? '' : route}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>${route === '/' ? 'weekly' : route.startsWith('/blog') ? 'monthly' : 'weekly'}</changefreq>
-    <priority>${route === '/' ? '1.0' : route.startsWith('/blog') ? '0.6' : '0.8'}</priority>
+    <priority>${priorityFor(route)}</priority>
   </url>`
   )
   .join('\n');

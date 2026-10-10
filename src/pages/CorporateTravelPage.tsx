@@ -101,28 +101,28 @@ const CorporateTravelPage: React.FC = () => {
       id: '1',
       name: 'Energy & Oil',
       description: 'Specialized travel solutions for energy sector professionals.',
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=70',
       specialties: ['Offshore Travel', 'Remote Locations', 'Safety Protocols', 'Emergency Response']
     },
     {
       id: '2',
       name: 'Marine & Shipping',
       description: 'Expert maritime travel and logistics management.',
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=70',
       specialties: ['Port Logistics', 'Crew Management', 'Cargo Coordination', 'International Regulations']
     },
     {
       id: '3',
       name: 'Construction',
       description: 'Tailored solutions for construction and engineering projects.',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=70',
       specialties: ['Project Sites', 'Equipment Transport', 'Team Coordination', 'Safety Compliance']
     },
     {
       id: '4',
       name: 'Technology',
       description: 'Modern travel solutions for tech companies and startups.',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70',
       specialties: ['Conference Travel', 'Client Meetings', 'Team Retreats', 'Innovation Hubs']
     }
   ];
@@ -148,7 +148,7 @@ const CorporateTravelPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -376,7 +376,7 @@ const CorporateTravelPage: React.FC = () => {
                     <div className="client-review-shimmer-ring" aria-hidden />
                     <div className="relative z-10 m-[2px] rounded-[calc(1.5rem-2px)] bg-white overflow-hidden transition-transform duration-500 ease-out group-hover:translate-y-[-2px] border border-gray-100/80">
                       <div className="relative h-48 overflow-hidden">
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={industry.image}
                           alt={industry.name}
                           className="w-full h-full object-cover"

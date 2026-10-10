@@ -1,27 +1,37 @@
-/** All indexable paths — used for sitemap generation and SEO route registry. */
+/**
+ * All indexable paths — single source of truth for sitemap.xml generation (scripts/generate-sitemap.mjs
+ * reads this file directly) and for the prerender route list (scripts/prerender.mjs).
+ *
+ * Deliberately excluded:
+ * - /corporate-travel-dubai, /mice-dubai, /luxury-travel-dubai, /visa-services-dubai — these are pure
+ *   301 redirects to their canonical page (see vercel.json "redirects"), not standalone content.
+ * - /privacy-policy, /terms-and-conditions, /crisis, /crisis/form, /thank-you — noindex pages.
+ */
 export const SITEMAP_ROUTES: string[] = [
   '/',
+  '/about',
+  '/blog',
   '/destinations',
   '/contact',
   '/corporate',
   '/corporate-travel',
-  '/corporate-travel-dubai',
   '/mice',
-  '/mice-dubai',
   '/industries',
   '/personal',
   '/platinum',
   '/luxury-travel',
-  '/luxury-travel-dubai',
   '/holidays',
   '/services',
   '/business-travel',
   '/corporate-events',
   '/first-class-travel',
   '/visa/africa',
-  '/visa-services-dubai',
-  '/privacy-policy',
-  '/terms-and-conditions',
+  '/visa/middle-east',
+  '/visa/europe',
+  '/visa/asia',
+  '/visa/canada',
+  '/visa/usa',
+  '/visa/cis',
   '/business-landing',
   '/travel-consultation',
   '/travel-agency-business-bay-dubai',
@@ -32,6 +42,18 @@ export const SITEMAP_ROUTES: string[] = [
   '/qatar-visa-from-dubai',
   '/bishkek-holiday-packages-dubai',
   '/group-travel-booking-dubai',
+  '/package/amsterdam-explorer',
+  '/package/eid-almaty-2026',
+  '/package/eid-armenia-2026',
+  '/package/eid-kenya-2026',
+  '/package/italian-heritage-tour',
+  '/package/paris-adventure',
+  '/package/swiss-alps-escape',
+  '/mice/meetings',
+  '/mice/incentives',
+  '/mice/conferences',
+  '/mice/exhibitions',
+  '/blog/dubai-visa-vs-uae-visa-is-there-a-difference',
   '/blog/why-business-trips-more-expensive-2026-guide-uae-companies',
   '/blog/how-to-choose-corporate-travel-agency-dubai-10-questions',
   '/blog/schengen-visa-rejection-reasons-common-mistakes',

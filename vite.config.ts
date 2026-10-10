@@ -21,7 +21,8 @@ export default defineConfig({
     },
   ],
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    // Pre-bundle lucide-react: excluding it made the dev server serve ~1,400 icon files as separate requests
+    include: ['lucide-react'],
   },
   build: {
     outDir: 'dist',

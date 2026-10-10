@@ -11,7 +11,7 @@ const WhyChoose: React.FC = () => {
     {
       title: 'Consistent, Personal Service',
       description: 'Global service standards, with on-the-ground expertise in 95+ countries. Personalised care so your travellers can thrive whenever, wherever.',
-      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=70',
       features: [
         'Dedicated account managers for your business',
         '24/7 global support across all time zones',
@@ -22,7 +22,7 @@ const WhyChoose: React.FC = () => {
     {
       title: 'Experience-led Technology',
       description: 'Say hello to one smooth, travel management experience with our Platform, built for managers, bookers and business travellers.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=70',
       features: [
         'Integrated booking platform for all travel needs',
         'Real-time travel tracking and updates',
@@ -33,7 +33,7 @@ const WhyChoose: React.FC = () => {
     {
       title: 'Enhanced Data & Visibility',
       description: 'From spend to safety and beyond. Whatever metrics matter most to your business, we\'ll help you find the insights that put you in control.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=70',
       features: [
         'Comprehensive travel spend analytics',
         'Real-time safety and security updates',
@@ -64,7 +64,7 @@ const WhyChoose: React.FC = () => {
               }`}
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <img
+                <img loading="lazy" decoding="async"
                   src={benefit.image}
                   alt={benefit.title}
                   className="w-full h-80 object-cover rounded-2xl shadow-xl"

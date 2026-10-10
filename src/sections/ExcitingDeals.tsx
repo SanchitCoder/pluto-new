@@ -11,7 +11,7 @@ const ExcitingDeals: React.FC = () => {
   
   const deals = [
     {
-      image: '/global-business-travel-package.png',
+      image: '/global-business-travel-package.webp',
       title: 'Global Business Travel Package',
       originalPrice: 14673,
       salePrice: 699,
@@ -21,7 +21,7 @@ const ExcitingDeals: React.FC = () => {
         'Flights, hotels, and policy-aligned booking support—built for teams that need predictable spend and fast changes.',
     },
     {
-      image: '/corporate-travel-management-card.png',
+      image: '/corporate-travel-management-card.webp',
       title: 'Corporate Travel Management',
       originalPrice: 9168,
       salePrice: 499,
@@ -31,7 +31,7 @@ const ExcitingDeals: React.FC = () => {
         'Dedicated program oversight, traveller care, and reporting so every trip stays compliant and visible.',
     },
     {
-      image: '/business-analytics-suite-card.png',
+      image: '/business-analytics-suite-card.webp',
       title: 'Business Analytics Suite',
       originalPrice: 6963,
       salePrice: 399,
@@ -41,7 +41,7 @@ const ExcitingDeals: React.FC = () => {
         'Dashboards and benchmarks that turn booking data into savings opportunities and smarter policy decisions.',
     },
     {
-      image: '/executive-travel-solutions-card.png',
+      image: '/executive-travel-solutions-card.webp',
       title: 'Executive Travel Solutions',
       originalPrice: 10633,
       salePrice: 599,

@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import { Check, Award, Globe, Users, Heart } from 'lucide-react';
 import Container from '../components/Container';
 import { FadeInSection } from '../components/FadeInSection';
+import { yearsOfExperienceLabel } from '../lib/siteConfig';
 
 const AboutSection: React.FC = () => {
   const features = [
-    'Expert corporate travel consultants with 17+ years experience',
+    `Expert corporate travel consultants with ${yearsOfExperienceLabel()} experience`,
     'Customized travel policies tailored to your business needs',
     '24/7 global business support and assistance',
-    'Best price guarantee with 28% average cost savings',
+    'Negotiated corporate rates — clients report significant average savings on travel spend',
     'Exclusive access to corporate travel rates',
     'Comprehensive travel analytics and reporting',
   ];
@@ -66,8 +67,8 @@ const AboutSection: React.FC = () => {
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+              <img loading="lazy" decoding="async"
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=70"
                 alt="Corporate Travel"
                 className="w-full h-full object-cover"
               />
@@ -89,6 +90,10 @@ const AboutSection: React.FC = () => {
                 </motion.div>
               ))}
             </div>
+            <p className="mt-3 text-xs text-white/50">
+              Figures reflect average outcomes reported by Pluto Travels corporate clients and are not guaranteed for
+              every account.
+            </p>
           </motion.div>
         </div>
       </Container>

@@ -11,28 +11,28 @@ const AttractionsSection: React.FC = () => {
 
   const attractions = [
     {
-      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=70',
       title: 'Burj Khalifa',
       location: 'Dubai, UAE',
       rating: 4.9,
       price: 149,
     },
     {
-      image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=70',
       title: 'Hagia Sophia',
       location: 'Istanbul, Turkey',
       rating: 4.8,
       price: 89,
     },
     {
-      image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=70',
       title: 'Eiffel Tower',
       location: 'Paris, France',
       rating: 4.9,
       price: 129,
     },
     {
-      image: 'https://images.unsplash.com/photo-1529260830199-42c24126f198?w=500&q=80',
+      image: 'https://images.unsplash.com/photo-1529260830199-42c24126f198?w=500&q=70',
       title: 'Colosseum',
       location: 'Rome, Italy',
       rating: 4.7,
@@ -63,7 +63,7 @@ const AttractionsSection: React.FC = () => {
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                   src={attraction.image}
                   alt={attraction.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

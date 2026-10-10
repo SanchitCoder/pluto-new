@@ -61,7 +61,7 @@ const MICEEventDetailPage: React.FC = () => {
       description: 'Corporate meetings, board meetings, and executive gatherings.',
       icon: Users,
       features: ['Conference Rooms', 'AV Equipment', 'Catering', 'Transportation'],
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&q=70',
       detailedDescription: 'Professional meeting management services for corporate gatherings, board meetings, and executive sessions. We provide comprehensive support from venue selection to execution.',
       benefits: [
         'Dedicated event coordinator',
@@ -83,7 +83,7 @@ const MICEEventDetailPage: React.FC = () => {
       description: 'Reward programs and motivational trips for high-performing teams.',
       icon: Award,
       features: ['Luxury Accommodations', 'Unique Experiences', 'Team Building', 'Recognition Programs'],
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=70',
       detailedDescription: 'Exclusive incentive travel programs designed to motivate and reward your top performers. Create unforgettable experiences that drive results.',
       benefits: [
         'Luxury accommodation options',
@@ -105,7 +105,7 @@ const MICEEventDetailPage: React.FC = () => {
       description: 'Large-scale conferences and industry events with multiple sessions.',
       icon: Calendar,
       features: ['Multiple Venues', 'Speaker Management', 'Registration', 'Networking Events'],
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70',
       detailedDescription: 'Comprehensive conference management for large-scale industry events. From planning to execution, we handle every detail.',
       benefits: [
         'Multi-venue coordination',
@@ -127,7 +127,7 @@ const MICEEventDetailPage: React.FC = () => {
       description: 'Trade shows, product launches, and exhibition management.',
       icon: Star,
       features: ['Booth Design', 'Logistics', 'Visitor Management', 'Marketing Support'],
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=70',
       detailedDescription: 'Complete exhibition management services for trade shows and product launches. Maximize your presence and ROI.',
       benefits: [
         'Custom booth design',

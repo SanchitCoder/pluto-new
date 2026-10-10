@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SITE } from '../lib/siteConfig';
 import { motion } from 'framer-motion';
 import {
   Crown, 
@@ -91,7 +92,7 @@ const PlatinumConciergePage: React.FC = () => {
       id: '1',
       title: 'Private Island Retreat',
       description: 'Exclusive access to a private island with luxury accommodations and personalized service.',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
       highlights: ['Private Island Access', 'Luxury Villa', 'Personal Chef', 'Water Sports'],
       price: 'From AED 58,700',
       duration: '7 Days / 6 Nights'
@@ -100,7 +101,7 @@ const PlatinumConciergePage: React.FC = () => {
       id: '2',
       title: 'European Grand Tour',
       description: 'Luxury journey through Europe\'s most exclusive destinations with private tours.',
-      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=70',
       highlights: ['Private Tours', 'Michelin Dining', 'Luxury Hotels', 'Cultural Experiences'],
       price: 'From AED 95,400',
       duration: '14 Days / 13 Nights'
@@ -109,7 +110,7 @@ const PlatinumConciergePage: React.FC = () => {
       id: '3',
       title: 'African Safari Experience',
       description: 'Exclusive wildlife encounters in Africa\'s most pristine reserves with luxury lodges.',
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=70',
       highlights: ['Private Game Drives', 'Luxury Lodges', 'Expert Guides', 'Photography Workshops'],
       price: 'From AED 69,700',
       duration: '10 Days / 9 Nights'
@@ -118,7 +119,7 @@ const PlatinumConciergePage: React.FC = () => {
       id: '4',
       title: 'Asian Cultural Immersion',
       description: 'Deep dive into Asian cultures with exclusive access to temples, palaces, and traditions.',
-      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70',
       highlights: ['Private Temple Tours', 'Palace Access', 'Cultural Workshops', 'Luxury Accommodations'],
       price: 'From AED 47,700',
       duration: '12 Days / 11 Nights'
@@ -154,7 +155,7 @@ const PlatinumConciergePage: React.FC = () => {
 
   const stats = [
     { icon: Crown, value: '500+', label: 'Platinum Members' },
-    { icon: Star, value: '4.9/5', label: 'Satisfaction Rate' },
+    { icon: Star, value: `${SITE.aggregateRating.ratingValue}/5`, label: 'Satisfaction Rate' },
     { icon: Globe, value: '80+', label: 'Countries' },
     { icon: Award, value: '15+', label: 'Years Experience' },
   ];
@@ -168,7 +169,7 @@ const PlatinumConciergePage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -301,7 +302,7 @@ const PlatinumConciergePage: React.FC = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={experience.image}
                     alt={experience.title}
                     className="w-full h-full object-cover"

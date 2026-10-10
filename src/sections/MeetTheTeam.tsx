@@ -26,7 +26,7 @@ const MeetTheTeam: React.FC = () => {
       id: '1',
       name: 'Sapna Aidasani',
       position: 'Marketing Director',
-      image: '/Sapna_New.jpeg',
+      image: '/Sapna_New.webp',
       bio: 'Sapna leads our marketing initiatives with over 18 years of experience in travel industry branding and digital marketing. She has been instrumental in establishing Pluto Travels as Dubai\'s premier travel concierge through innovative marketing strategies and client engagement programs.',
       experience: '18+ Years',
       specialties: ['Digital Marketing', 'Brand Strategy', 'Client Engagement', 'Social Media'],
@@ -57,7 +57,7 @@ const MeetTheTeam: React.FC = () => {
             >
               <ShimmerBorderCard className="shadow-lg transition-shadow duration-300 hover:shadow-2xl">
                 <div className="relative">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={member.image}
                     alt={member.name}
                     className="w-full h-80 object-contain object-center bg-gray-50"

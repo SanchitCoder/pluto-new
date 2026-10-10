@@ -107,7 +107,7 @@ const TestimonialsSection: React.FC = () => {
   ];
 
   return (
-    <FadeInSection className="py-16 bg-gradient-to-br from-luxury-darkBlue to-primary-navy text-white">
+    <FadeInSection className="py-16 bg-gradient-to-br from-luxury-darkBlue to-primary-navy text-white cv-auto">
       <Container>
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight tracking-tight px-2">

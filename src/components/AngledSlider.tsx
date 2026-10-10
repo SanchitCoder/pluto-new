@@ -80,7 +80,7 @@ function AngledCard<T extends AngledSliderItem>({
         ) : (
           <>
             <div className="relative h-full min-h-[280px] w-full">
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.url}
                 alt={item.alt || item.title || 'Slide'}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"

@@ -2,8 +2,8 @@
 export const SITE = {
   name: 'Pluto Travels LLC',
   legalName: 'Pluto Travels LLC',
-  url: 'https://plutotravels.ae',
-  domain: 'plutotravels.ae',
+  url: 'https://www.plutotravels.ae',
+  domain: 'www.plutotravels.ae',
   locale: 'en_AE',
   foundingDate: '2007',
   email: 'sales@plutotravels.ae',
@@ -55,4 +55,19 @@ export const SITE = {
 export function absoluteUrl(path: string): string {
   if (path.startsWith('http')) return path;
   return `${SITE.url}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
+/**
+ * Single source of truth for "X+ years" company-age badges, derived from foundingDate.
+ * Do not hardcode "17+", "18+", "19+" etc. elsewhere — those drift out of sync (flagged in the
+ * Oct 2026 SEO audit as a trust-signal inconsistency). This does NOT apply to an individual's
+ * personal career length (e.g. a founder's bio), which is a different, legitimately separate number.
+ */
+export function yearsOfExperience(asOf: Date = new Date()): number {
+  return asOf.getFullYear() - Number(SITE.foundingDate);
+}
+
+/** "19+ Years" — ready-to-render company-age badge text. */
+export function yearsOfExperienceLabel(asOf: Date = new Date()): string {
+  return `${yearsOfExperience(asOf)}+ Years`;
 }

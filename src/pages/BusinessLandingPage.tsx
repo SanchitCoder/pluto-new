@@ -36,11 +36,12 @@ import ConsultationModal from '../components/ConsultationModal';
 import { Destinations3DRowStack } from '../components/ImageSlider3D';
 import { DESTINATION_CAROUSEL_SLIDES } from '../data/destinationCarouselSlides';
 import { useCyclingCardScales, cardZoomScaleTransition } from '../hooks/useCyclingCardScales';
+import { yearsOfExperienceLabel } from '../lib/siteConfig';
 
 const whyChooseItems = [
   {
     icon: Award,
-    title: '17+ Years of Expertise',
+    title: `${yearsOfExperienceLabel()} of Expertise`,
     description: 'Specialized in structured group travel and ultra-luxury experiences.',
   },
   {
@@ -567,6 +568,10 @@ const BusinessLandingPage: React.FC = () => {
                 </motion.div>
               ))}
             </div>
+            <p className="text-xs text-gray-500 mb-6 sm:mb-8">
+              Figures reflect average outcomes reported by Pluto Travels corporate clients and are not guaranteed for
+              every account.
+            </p>
 
             <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 font-semibold">
               Our clients don't just travel — they operate strategically and experience exceptionally.

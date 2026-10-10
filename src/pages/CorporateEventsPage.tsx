@@ -22,6 +22,36 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PageFAQSection from '../components/PageFAQSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+
+const CORPORATE_EVENTS_FAQS = [
+  {
+    question: 'What size of corporate event can Pluto Travels manage?',
+    answer:
+      'From a 20-person offsite to a multi-day conference with several hundred delegates. We scale venue sourcing, logistics and on-site support to the size and complexity of your event.',
+  },
+  {
+    question: 'Do you handle venue sourcing as well as delegate travel?',
+    answer:
+      'Yes. We coordinate venue selection, delegate flights and hotel blocks, ground transfers and on-the-day logistics as one managed event rather than separate suppliers you need to coordinate yourself.',
+  },
+  {
+    question: 'Can you manage international delegates and visa requirements?',
+    answer:
+      'Yes — for events bringing in delegates from multiple countries, we can advise on visa requirements and coordinate travel arrangements so international attendees arrive without avoidable complications.',
+  },
+  {
+    question: 'How far in advance should we start planning a corporate event?',
+    answer:
+      'For larger events with 100+ delegates or international travel, 3 to 6 months gives the best access to venues and group fares. Smaller offsites can often be arranged with shorter notice.',
+  },
+  {
+    question: 'Do you provide on-site support during the event itself?',
+    answer:
+      'Yes. Depending on the scope of the event, our team can provide on-ground coordination so that transport, check-ins and schedule changes are handled in real time rather than left to delegates to figure out.',
+  },
+];
 import LunaAIChatButton from '../components/LunaAIChatButton';
 import MobileBottomCTA from '../components/MobileBottomCTA';
 import ConsultationModal from '../components/ConsultationModal';
@@ -94,7 +124,7 @@ const CorporateEventsPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-navy/80 via-primary-navy/60 to-transparent" />
@@ -281,6 +311,9 @@ const CorporateEventsPage: React.FC = () => {
           </motion.div>
         </Container>
       </FadeInSection>
+
+      <PageFAQSection faqs={CORPORATE_EVENTS_FAQS} subtitle="Common questions about corporate events travel with Pluto Travels." />
+      <JsonLdSchema pathname="/corporate-events" type="FAQPage" variant="faq-only" faqs={CORPORATE_EVENTS_FAQS} />
 
       <Footer />
       <LunaAIChatButton />

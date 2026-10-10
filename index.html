@@ -6,15 +6,15 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
 
-    <title>Pluto Travels | Dubai's Premier Luxury Travel Concierge & Corporate Travel Management</title>
-    <meta name="title" content="Pluto Travels | Dubai's Premier Luxury Travel Concierge & Corporate Travel Management" />
-    <meta name="description" content="Dubai's award-winning IATA travel agency since 2007. Corporate travel, MICE, luxury concierge & visa services. 244 Google reviews, 4.6★, 98.7% retention. Get a corporate travel quote today." />
-    <meta name="keywords" content="luxury travel Dubai, corporate travel management UAE, platinum travel concierge, HNI travel services, business travel Dubai, MICE events UAE, luxury holiday packages" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.plutotravels.ae/" />
-    <meta property="og:title" content="Pluto Travels | Dubai's Premier Luxury Travel Concierge" />
-    <meta property="og:description" content="24/7 white-glove travel service for Dubai's business elite. 18 years of extraordinary experiences, 98.7% client retention." />
+    <!--
+      Deliberately no static description/keywords/og:* tags here. Every real route is prerendered
+      (scripts/prerender.mjs) with its own unique title/description/canonical/OG/JSON-LD baked into
+      the served HTML via SEOHead + react-helmet-async. A static fallback here would sit alongside
+      Helmet's tags rather than being replaced by them (Helmet only manages tags it rendered itself),
+      producing two conflicting <meta name="description"> tags on every page — exactly the kind of
+      mismatch flagged in the Oct 2026 SEO audit. This title is a pre-hydration fallback only.
+    -->
+    <title>Pluto Travels | Corporate Travel &amp; Luxury Concierge Dubai</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

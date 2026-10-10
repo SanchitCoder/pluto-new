@@ -1,15 +1,49 @@
 {
+  "redirects": [
+    { "source": "/corporate-travel-dubai", "destination": "/corporate-travel", "statusCode": 301 },
+    { "source": "/mice-dubai", "destination": "/mice", "statusCode": 301 },
+    { "source": "/luxury-travel-dubai", "destination": "/luxury-travel", "statusCode": 301 },
+    { "source": "/visa-services-dubai", "destination": "/visa/africa", "statusCode": 301 },
+    { "source": "/visa", "destination": "/visa/africa", "statusCode": 301 }
+  ],
   "rewrites": [
     {
       "source": "/Crisis-Video.mp4",
       "destination": "/Crisis-Video.mp4"
     },
     {
-      "source": "/(.*)",
+      "source": "/visa/:region/:countryId",
       "destination": "/index.html"
     }
   ],
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/:all*(webp|png|jpg|jpeg|gif|svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
+    },
     {
       "source": "/sitemap.xml",
       "headers": [
@@ -25,6 +59,15 @@
         {
           "key": "Content-Type",
           "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
         }
       ]
     },
@@ -81,4 +124,3 @@
     }
   ]
 }
-

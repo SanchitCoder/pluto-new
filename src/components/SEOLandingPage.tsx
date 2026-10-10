@@ -29,12 +29,12 @@ export default function SEOLandingPage({ config }: SEOLandingPageProps) {
       <Navigation />
 
       <section className="relative flex min-h-[52vh] items-end overflow-hidden">
-        <img
+        <img decoding="async"
           src={config.heroImage}
           alt={config.heroImageAlt}
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
-          fetchPriority="high"
+          {...({ fetchpriority: 'high' } as Record<string, string>)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-darkBlue/95 via-primary-navy/70 to-primary-navy/40" />
         <Container className="relative z-10 pb-12 pt-28">

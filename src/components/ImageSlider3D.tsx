@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   animate,
   motion,
@@ -9,6 +9,7 @@ import {
 } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useCyclingCardScales, cardZoomScaleTransition } from '../hooks/useCyclingCardScales';
+import { useInViewport } from '../hooks/useInViewport';
 
 export type Slider3DSlide = {
   image: string;
@@ -29,6 +30,8 @@ export interface ImageSlider3DProps {
   imageClassName?: string;
   rotationDirection?: 'left' | 'right';
   withMask?: boolean;
+  /** Page background colour the edge-fade overlays blend into (used when withMask is true). */
+  edgeFadeColor?: string;
   /**
    * Top/bottom: concave ring (negative translateZ).
    * Middle: convex ring (positive translateZ) + front-facing card scales up (inverted feel vs top/bottom).
@@ -107,14 +110,14 @@ function RingSlide({
 
   const media = (
     <>
-      <img
+      <img decoding="async"
         src={slide.image}
         alt=""
         className="absolute inset-0 z-0 h-full w-full object-cover"
         loading="lazy"
         onError={(e) => {
           (e.target as HTMLImageElement).src =
-            'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80&auto=format&fit=crop';
+            'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=70&auto=format&fit=crop';
         }}
       />
       <div
@@ -173,7 +176,7 @@ function RingSlide({
         transition={cardZoomScaleTransition}
         style={{ transformOrigin: 'center center' }}
       >
-        <div className="client-review-shimmer-ring" aria-hidden />
+        {emphasisScale > 1.05 && <div className="client-review-shimmer-ring" aria-hidden />}
         {media}
       </motion.div>
     </motion.div>
@@ -194,24 +197,21 @@ export function ImageSlider3D({
   imageClassName = '',
   rotationDirection = 'left',
   withMask = true,
+  edgeFadeColor = '#F5F6F8',
   rowType = 'top',
   cyclingEmphasis = false,
 }: ImageSlider3DProps) {
   const n = slides.length;
   const prefersReducedMotion = useReducedMotion();
-  const emphasisScales = useCyclingCardScales(cyclingEmphasis ? n : 0);
+  const [viewRef, inView] = useInViewport<HTMLDivElement>('150px 0px');
+  const emphasisScales = useCyclingCardScales(cyclingEmphasis ? n : 0, inView);
   const animationDuration = prefersReducedMotion ? duration * 4 : duration;
-
-  const maskStyles: React.CSSProperties = withMask
-    ? {
-        WebkitMask: 'linear-gradient(90deg, transparent, #000 12% 88%, transparent)',
-        mask: 'linear-gradient(90deg, transparent, #000 12% 88%, transparent)',
-      }
-    : {};
 
   const effectivePerspective = rowType === 'middle' ? '45rem' : perspective;
 
   const rotateY = useMotionValue(rotationDirection === 'left' ? 0 : 360);
+
+  const controlsRef = useRef<ReturnType<typeof animate> | null>(null);
 
   useEffect(() => {
     if (n < 1) return;
@@ -227,21 +227,31 @@ export function ImageSlider3D({
       ease: 'linear',
       repeatType: 'loop',
     });
-    return () => controls.stop();
+    controlsRef.current = controls;
+    return () => {
+      controls.stop();
+      controlsRef.current = null;
+    };
   }, [n, prefersReducedMotion, rotationDirection, animationDuration, rotateY]);
+
+  // Pause the rotation while the carousel is off-screen (resumes from the same angle)
+  useEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    if (inView) controls.play();
+    else controls.pause();
+  }, [inView, n, prefersReducedMotion, rotationDirection, animationDuration]);
 
   if (n < 1) return null;
 
   return (
     <div
+      ref={viewRef}
       className={cn(
-        'grid h-full min-h-[220px] w-full place-items-center overflow-hidden sm:min-h-[260px] md:min-h-[300px]',
+        'relative grid h-full min-h-[220px] w-full place-items-center overflow-hidden sm:min-h-[260px] md:min-h-[300px]',
         containerClassName
       )}
-      style={{
-        perspective: effectivePerspective,
-        ...maskStyles,
-      }}
+      style={{ perspective: effectivePerspective }}
       aria-hidden
     >
       <motion.div
@@ -264,6 +274,18 @@ export function ImageSlider3D({
           />
         ))}
       </motion.div>
+      {withMask && (
+        <>
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 z-[150] w-[12%]"
+            style={{ background: `linear-gradient(90deg, ${edgeFadeColor}, transparent)` }}
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-[150] w-[12%]"
+            style={{ background: `linear-gradient(270deg, ${edgeFadeColor}, transparent)` }}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -71,7 +71,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '1',
       title: 'Luxury Maldives Escape',
       destination: 'Maldives',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
       description: 'Ultimate relaxation in overwater villas with crystal-clear waters and pristine beaches.',
       duration: '5 Days / 4 Nights',
       price: 9170,
@@ -86,7 +86,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '2',
       title: 'Swiss Alps Adventure',
       destination: 'Switzerland',
-      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=70',
       description: 'Majestic mountain peaks, pristine lakes, and charming alpine villages.',
       duration: '7 Days / 6 Nights',
       price: 8070,
@@ -101,7 +101,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '3',
       title: 'Tokyo Cultural Journey',
       destination: 'Japan',
-      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70',
       description: 'A perfect blend of ancient traditions and cutting-edge modernity.',
       duration: '6 Days / 5 Nights',
       price: 5870,
@@ -116,7 +116,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '4',
       title: 'Santorini Romance',
       destination: 'Greece',
-      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=70',
       description: 'Experience the magic of white-washed buildings against the deep blue Aegean Sea.',
       duration: '5 Days / 4 Nights',
       price: 6970,
@@ -131,7 +131,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '5',
       title: 'New Zealand Adventure',
       destination: 'New Zealand',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
       description: 'Adventure capital of the world with stunning landscapes and thrilling activities.',
       duration: '10 Days / 9 Nights',
       price: 7340,
@@ -146,7 +146,7 @@ const HolidayPackagesPage: React.FC = () => {
       id: '6',
       title: 'Paris City Break',
       destination: 'France',
-      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=70',
       description: 'The City of Light, where romance meets art and culture.',
       duration: '4 Days / 3 Nights',
       price: 4770,
@@ -187,7 +187,7 @@ const HolidayPackagesPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -334,7 +334,7 @@ const HolidayPackagesPage: React.FC = () => {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={pkg.image}
                     alt={pkg.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

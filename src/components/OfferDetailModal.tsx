@@ -61,7 +61,7 @@ const OfferDetailModal: React.FC<OfferDetailModalProps> = ({ isOpen, onClose, of
             <div className="relative">
               {/* Image */}
               <div className="relative h-48 sm:h-64 md:h-80 rounded-lg sm:rounded-xl overflow-hidden mb-4 sm:mb-6">
-                <img
+                <img loading="lazy" decoding="async"
                   src={offer.image}
                   alt={offer.title}
                   className="w-full h-full object-cover"

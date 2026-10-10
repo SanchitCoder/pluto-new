@@ -9,19 +9,19 @@ import { FadeInSection } from '../components/FadeInSection';
 const SocialProof: React.FC = () => {
   const testimonials = [
     {
-      videoThumb: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80',
+      videoThumb: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=70',
       title: 'How We Saved 28% on Corporate Travel Costs',
       author: 'Sarah Johnson',
       company: 'Tech Fortune 500',
     },
     {
-      videoThumb: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+      videoThumb: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70',
       title: '24/7 Global Business Support Excellence',
       author: 'Ahmed Al-Mansoori',
       company: 'Energy Sector Executive',
     },
     {
-      videoThumb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80',
+      videoThumb: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=70',
       title: 'Seamless Travel Management Platform',
       author: 'Jennifer Chen',
       company: 'Financial Services Director',
@@ -103,7 +103,7 @@ const SocialProof: React.FC = () => {
               className="group cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-xl mb-4">
-                <img
+                <img loading="lazy" decoding="async"
                   src={testimonial.videoThumb}
                   alt={testimonial.title}
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"

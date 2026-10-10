@@ -303,7 +303,7 @@ export function TestimonialCardFace({
       <div className="flex items-start gap-4">
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-gray-200 bg-gray-100">
           {item.image ? (
-            <img src={item.image} alt="" className="h-full w-full object-cover" />
+            <img loading="lazy" decoding="async" src={item.image} alt="" className="h-full w-full object-cover" />
           ) : (
             <div
               className={`flex h-full w-full items-center justify-center text-sm font-bold text-white ${avatarBg}`}

@@ -21,6 +21,38 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import BookingDiscoveryModal from '../components/BookingDiscoveryModal';
 import MobileBottomCTA from '../components/MobileBottomCTA';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import PageFAQSection from '../components/PageFAQSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+
+const LUXURY_TRAVEL_FAQS = [
+  {
+    question: 'What makes a Pluto Travels luxury itinerary different from a standard holiday package?',
+    answer:
+      'Every itinerary is built around you rather than picked from a fixed brochure — your preferred pace, destinations, hotel style and occasion shape the plan. We handle flights, exclusive hotels and villas, private transfers and curated experiences as one coordinated trip, not separate bookings.',
+  },
+  {
+    question: 'How far in advance should I start planning a luxury trip?',
+    answer:
+      'For most destinations, 4 to 8 weeks gives us the best access to preferred suites, private villas and sought-after experiences. For peak periods — summer, year-end holidays and major events — starting 2 to 3 months ahead is recommended so availability isn\'t limited.',
+  },
+  {
+    question: 'Can you arrange private villas and yacht or desert experiences, not just hotels?',
+    answer:
+      'Yes. Alongside 5-star hotel stays, we arrange private villas, yacht charters, private desert experiences and other exclusive activities as part of a single itinerary, with transfers and timing coordinated so the day runs smoothly.',
+  },
+  {
+    question: 'Do you handle honeymoons, anniversaries and other milestone celebrations?',
+    answer:
+      'Yes — honeymoons, anniversaries, proposals and milestone birthdays are among our most requested luxury trips. Tell us the occasion and we will build details like private dining, room upgrades and surprise touches into the itinerary.',
+  },
+  {
+    question: 'Is a luxury itinerary more expensive than booking everything myself?',
+    answer:
+      'Not necessarily. We have access to preferred rates with many luxury hotel partners, and a well-sequenced itinerary avoids the inefficient flights, transfers and last-minute bookings that often drive up the cost of planning a trip alone.',
+  },
+];
 
 const LuxuryTravelPage: React.FC = () => {
   const [bookingDiscoveryOpen, setBookingDiscoveryOpen] = useState(false);
@@ -174,24 +206,25 @@ const LuxuryTravelPage: React.FC = () => {
   const destinations = [
     {
       name: 'Greece',
-      image: 'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&q=70',
     },
     {
       name: 'NEW ZEALAND',
-      image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=70',
     },
     {
       name: 'Australia',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
     },
     {
       name: 'Switzerland',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
     },
   ];
 
   return (
     <div className="min-h-screen bg-luxury-darkBlue">
+      <Navigation />
       {/* Hero Section */}
       <FadeInSection className="relative pt-20 sm:pt-24 pb-12 sm:pb-16 bg-luxury-darkBlue">
         <Container>
@@ -407,7 +440,7 @@ const LuxuryTravelPage: React.FC = () => {
                 className="relative group"
               >
                 <div className="border-2 border-white rounded-xl overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={destination.image}
                     alt={destination.name}
                     className="w-full h-[250px] sm:h-[300px] object-cover group-hover:scale-110 transition-transform duration-300"
@@ -460,7 +493,7 @@ const LuxuryTravelPage: React.FC = () => {
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-20"
                 style={{
-                  backgroundImage: 'url(https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80)',
+                  backgroundImage: 'url(https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=70)',
                 }}
               />
               <div className="relative z-10">
@@ -517,9 +550,13 @@ const LuxuryTravelPage: React.FC = () => {
         </Container>
       </FadeInSection>
 
+      <PageFAQSection faqs={LUXURY_TRAVEL_FAQS} subtitle="Common questions about planning a luxury trip with Pluto Travels." />
+      <JsonLdSchema pathname="/luxury-travel" type="FAQPage" variant="faq-only" faqs={LUXURY_TRAVEL_FAQS} />
+
+      <Footer />
       <MobileBottomCTA />
-      
-      <BookingDiscoveryModal 
+
+      <BookingDiscoveryModal
         isOpen={bookingDiscoveryOpen} 
         onClose={() => setBookingDiscoveryOpen(false)}
         formUrl="https://crm.plutotravels.ae/widget/booking/PXUJZZFxr2kaGwRnA0rL"

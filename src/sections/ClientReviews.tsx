@@ -4,6 +4,7 @@ import { Star, MessageSquare, ThumbsUp, Award } from 'lucide-react';
 import Container from '../components/Container';
 import { FadeInSection } from '../components/FadeInSection';
 import { useCyclingCardScales, cardZoomScaleTransition } from '../hooks/useCyclingCardScales';
+import { SITE } from '../lib/siteConfig';
 
 const ClientReviews: React.FC = () => {
   const scales = useCyclingCardScales(3);
@@ -11,9 +12,9 @@ const ClientReviews: React.FC = () => {
   const reviews = [
     {
       icon: MessageSquare,
-      count: '850+',
-      label: 'Client Reviews',
-      rating: 4.9,
+      count: SITE.aggregateRating.reviewCount,
+      label: 'Google Reviews',
+      rating: Number(SITE.aggregateRating.ratingValue),
       gradient: 'from-primary-teal to-primary-navy',
     },
     {
@@ -61,7 +62,7 @@ const ClientReviews: React.FC = () => {
             {[1, 2, 3, 4, 5].map((star) => (
               <Star key={star} className="fill-accent-gold text-accent-gold" size={28} />
             ))}
-            <span className="ml-3 text-2xl font-semibold text-gray-700">4.9/5.0</span>
+            <span className="ml-3 text-2xl font-semibold text-gray-700">{SITE.aggregateRating.ratingValue}/5.0</span>
           </div>
         </div>
 

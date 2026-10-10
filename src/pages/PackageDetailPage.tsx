@@ -49,7 +49,7 @@ const PackageDetailPage: React.FC = () => {
   const packages: PackageData[] = [
     {
       id: 'eid-armenia-2026',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=70',
       title: 'Eid Al Fitr Package to Armenia',
       location: 'Armenia, Yerevan',
       duration: '4 Days / 3 Nights',
@@ -154,7 +154,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'eid-almaty-2026',
-      image: 'https://images.unsplash.com/photo-1503221017520-7b0e2c5e4e5a?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=70',
       title: 'Eid Al Adha Package to Almaty',
       location: 'Almaty, Kazakhstan',
       duration: '4 Days / 3 Nights',
@@ -274,7 +274,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'eid-kenya-2026',
-      image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=70',
       title: 'Eid Al Fitr Package to Kenya',
       location: 'Kenya (Nairobi, Maasai Mara, Lake Naivasha)',
       duration: '5 Days / 4 Nights',
@@ -410,7 +410,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'paris-adventure',
-      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=800&q=70',
       title: 'Paris Adventure',
       location: 'France',
       duration: '5 Days / 4 Nights',
@@ -480,7 +480,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'italian-heritage-tour',
-      image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=70',
       title: 'Italian Heritage Tour',
       location: 'Italy',
       duration: '7 Days / 6 Nights',
@@ -562,7 +562,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'swiss-alps-escape',
-      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=800&q=70',
       title: 'Swiss Alps Escape',
       location: 'Switzerland',
       duration: '6 Days / 5 Nights',
@@ -638,7 +638,7 @@ const PackageDetailPage: React.FC = () => {
     },
     {
       id: 'amsterdam-explorer',
-      image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=70',
       title: 'Amsterdam Explorer',
       location: 'Netherlands',
       duration: '4 Days / 3 Nights',
@@ -725,7 +725,7 @@ const PackageDetailPage: React.FC = () => {
       
       {/* Hero Section */}
       <FadeInSection className="relative h-96 overflow-hidden">
-        <img
+        <img loading="lazy" decoding="async"
           src={packageData.image}
           alt={packageData.title}
           className="w-full h-full object-cover"

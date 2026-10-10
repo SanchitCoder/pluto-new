@@ -21,61 +21,61 @@ const ServicesGrid: React.FC = () => {
       title: 'Flight Management',
       color: 'from-primary-coral to-primary-orange',
       link: '/business-travel',
-      backgroundImage: '/flight-management-corporate-sunset.png',
+      backgroundImage: '/flight-management-corporate-sunset.webp',
     },
     {
       icon: Hotel,
       title: 'Hotel Solutions',
       color: 'from-accent-gold to-primary-orange',
       link: '/services',
-      backgroundImage: '/hotel-solutions-luxury.png',
+      backgroundImage: '/hotel-solutions-luxury.webp',
     },
     {
       icon: Car,
       title: 'Ground Transportation',
       color: 'from-primary-green to-accent-emerald',
       link: '/services',
-      backgroundImage: '/ground-transportation-sprinter.png',
+      backgroundImage: '/ground-transportation-sprinter.webp',
     },
     {
       icon: Briefcase,
       title: 'Corporate Travel',
       color: 'from-primary-teal to-primary-navy',
       link: '/corporate-travel',
-      backgroundImage: '/corporate-travel-terminal.png',
+      backgroundImage: '/corporate-travel-terminal.webp',
     },
     {
       icon: Ship,
       title: 'MICE & Events',
       color: 'from-blue-500 to-blue-700',
       link: '/mice',
-      backgroundImage: '/mice-events-conference.png',
+      backgroundImage: '/mice-events-conference.webp',
     },
     {
       icon: Calendar,
       title: 'Travel Policy Management',
       color: 'from-purple-500 to-purple-700',
       link: '/corporate-travel',
-      backgroundImage: '/travel-policy-management-card.png',
+      backgroundImage: '/travel-policy-management-card.webp',
     },
     {
       icon: Globe,
       title: 'Global Coverage',
       color: 'from-primary-orange to-accent-coral',
       link: '/corporate',
-      backgroundImage: '/global-coverage-hand-globe.png',
+      backgroundImage: '/global-coverage-hand-globe.webp',
     },
     {
       icon: FileText,
       title: 'Travel Analytics',
       color: 'from-red-500 to-pink-600',
       link: '/corporate-travel',
-      backgroundImage: '/travel-analytics-dashboard-card.png',
+      backgroundImage: '/travel-analytics-dashboard-card.webp',
     },
   ];
 
   return (
-    <FadeInSection className="py-16 bg-luxury-canvas">
+    <FadeInSection className="py-16 bg-luxury-canvas cv-auto">
       <Container>
         <div className="mb-8 w-full px-4 text-left sm:mb-10 md:mb-12">
           <h2 className="text-3xl font-heading font-bold text-luxury-darkBlue md:text-4xl mb-2 sm:mb-3 md:mb-4">

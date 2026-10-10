@@ -53,7 +53,7 @@ const DestinationsPage: React.FC = () => {
       name: 'Santorini',
       country: 'Greece',
       continent: 'europe',
-      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=70',
       description: 'Experience the magic of white-washed buildings against the deep blue Aegean Sea.',
       rating: 4.9,
       reviews: 2847,
@@ -68,7 +68,7 @@ const DestinationsPage: React.FC = () => {
       name: 'Swiss Alps',
       country: 'Switzerland',
       continent: 'europe',
-      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=70',
       description: 'Majestic mountain peaks, pristine lakes, and charming alpine villages.',
       rating: 4.8,
       reviews: 1923,
@@ -83,7 +83,7 @@ const DestinationsPage: React.FC = () => {
       name: 'Tokyo',
       country: 'Japan',
       continent: 'asia',
-      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70',
       description: 'A perfect blend of ancient traditions and cutting-edge modernity.',
       rating: 4.7,
       reviews: 3456,
@@ -98,7 +98,7 @@ const DestinationsPage: React.FC = () => {
       name: 'Maldives',
       country: 'Maldives',
       continent: 'asia',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
       description: 'Paradise on earth with crystal-clear waters and pristine beaches.',
       rating: 4.9,
       reviews: 1876,
@@ -113,7 +113,7 @@ const DestinationsPage: React.FC = () => {
       name: 'New Zealand',
       country: 'New Zealand',
       continent: 'oceania',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70',
       description: 'Adventure capital of the world with stunning landscapes.',
       rating: 4.8,
       reviews: 2134,
@@ -128,7 +128,7 @@ const DestinationsPage: React.FC = () => {
       name: 'Paris',
       country: 'France',
       continent: 'europe',
-      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=70',
       description: 'The City of Light, where romance meets art and culture.',
       rating: 4.6,
       reviews: 4567,
@@ -158,7 +158,7 @@ const DestinationsPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -280,7 +280,7 @@ const DestinationsPage: React.FC = () => {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={destination.image}
                     alt={destination.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

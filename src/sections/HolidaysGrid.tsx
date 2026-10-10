@@ -6,14 +6,14 @@ import { FadeInSection } from '../components/FadeInSection';
 
 const HolidaysGrid: React.FC = () => {
   const destinations = [
-    { name: 'Turkey', image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&q=80', packages: 25 },
-    { name: 'Dubai', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80', packages: 32 },
-    { name: 'Maldives', image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=80', packages: 18 },
-    { name: 'Switzerland', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80', packages: 22 },
-    { name: 'Bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80', packages: 28 },
-    { name: 'Paris', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80', packages: 30 },
-    { name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=80', packages: 24 },
-    { name: 'Thailand', image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80', packages: 35 },
+    { name: 'Turkey', image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&q=70', packages: 25 },
+    { name: 'Dubai', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70', packages: 32 },
+    { name: 'Maldives', image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=70', packages: 18 },
+    { name: 'Switzerland', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70', packages: 22 },
+    { name: 'Bali', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=70', packages: 28 },
+    { name: 'Paris', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=70', packages: 30 },
+    { name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70', packages: 24 },
+    { name: 'Thailand', image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=70', packages: 35 },
   ];
 
   return (
@@ -38,7 +38,7 @@ const HolidaysGrid: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               className="relative group cursor-pointer rounded-xl overflow-hidden h-64 shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={dest.image}
                 alt={dest.name}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

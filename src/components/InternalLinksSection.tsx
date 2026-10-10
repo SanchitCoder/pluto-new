@@ -27,7 +27,7 @@ const LOCAL_AND_DEALS = [
 /** Internal linking hub for SEO — use on homepage and landing pages. */
 export default function InternalLinksSection() {
   return (
-    <FadeInSection className="border-t border-gray-200 bg-luxury-canvas py-12">
+    <FadeInSection className="border-t border-gray-200 bg-luxury-canvas py-12 cv-auto">
       <Container>
         <h2 className="mb-2 text-2xl font-bold text-luxury-darkBlue">Explore Our Travel Services</h2>
         <p className="mb-8 max-w-2xl text-gray-600">

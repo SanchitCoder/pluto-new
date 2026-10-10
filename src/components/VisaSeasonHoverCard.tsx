@@ -33,14 +33,14 @@ export const VisaSeasonHoverCard: React.FC<VisaSeasonHoverCardProps> = ({
         className
       )}
     >
-      <img
+      <img decoding="async"
         src={imageSrc}
         className="absolute inset-0 h-full w-full object-cover object-center"
         alt={imageAlt || title}
         loading="lazy"
         onError={(e) => {
           (e.target as HTMLImageElement).src =
-            'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80';
+            'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=70';
         }}
       />
       <div className="absolute inset-0 bg-black/60" aria-hidden />

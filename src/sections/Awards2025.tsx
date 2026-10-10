@@ -12,37 +12,37 @@ interface Award extends AngledSliderItem {
 }
 
 const FALLBACK_IMG =
-  'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=400&q=80';
+  'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=400&q=70';
 
 const Awards2025: React.FC = () => {
   const awards: Award[] = [
     {
       id: '1',
-      image: '/awards/Left.JPG',
+      image: '/awards/Left.webp',
       title: 'Award Recognition',
       description: 'Recognized for excellence in corporate travel management',
     },
     {
       id: '2',
-      image: '/awards/Centre.JPG',
+      image: '/awards/Centre.webp',
       title: 'Award Recognition',
       description: 'Outstanding service delivery and client satisfaction',
     },
     {
       id: '3',
-      image: '/awards/Right.JPG',
+      image: '/awards/Right.webp',
       title: 'Award Recognition',
       description: 'Industry leadership and innovation in travel solutions',
     },
     {
       id: '4',
-      image: '/awards/Award1.jpeg',
+      image: '/awards/Award1.webp',
       title: 'Award Recognition',
       description: 'Excellence in travel services and customer satisfaction',
     },
     {
       id: '5',
-      image: '/awards/Award2.jpeg',
+      image: '/awards/Award2.webp',
       title: 'Award Recognition',
       description: 'Outstanding achievements in the travel industry',
     },
@@ -50,7 +50,7 @@ const Awards2025: React.FC = () => {
 
   const rakPoliceAward: Award = {
     id: '7',
-    image: '/awards/ras-al-khaimah-police-award.jpeg',
+    image: '/awards/ras-al-khaimah-police-award.webp',
     title: 'Awarded by Ras Al Khaimah Police',
     description:
       'Pluto Travels honoured by Ras Al Khaimah Police for excellence in travel services and community partnership',
@@ -58,7 +58,7 @@ const Awards2025: React.FC = () => {
 
   const martechAward: Award = {
     id: '6',
-    image: '/awards/MartechAwards.jpeg',
+    image: '/awards/MartechAwards.webp',
     title: 'Future-Ready Brand of the Year',
     description: 'Awarded at MarTech Leadership Summit & Awards 2026',
   };
@@ -74,7 +74,7 @@ const Awards2025: React.FC = () => {
   const awardDescClass = 'text-gray-600 text-sm leading-relaxed line-clamp-4';
 
   return (
-    <FadeInSection className="py-16 bg-luxury-canvas">
+    <FadeInSection className="py-16 bg-luxury-canvas cv-auto">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ const Awards2025: React.FC = () => {
           renderCard={(award) => (
             <div className={awardCardClass}>
               <div className={`${awardImageWrapClass}`}>
-                <img
+                <img loading="lazy" decoding="async"
                   src={award.image}
                   alt={award.title}
                   className="max-h-full max-w-full w-auto h-auto object-contain p-3 transition-transform duration-500 group-hover:scale-[1.04]"

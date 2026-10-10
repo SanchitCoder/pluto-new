@@ -23,6 +23,34 @@ function splitWords(text: string): string[] {
   return text.trim().split(/\s+/).filter(Boolean);
 }
 
+const Word = React.memo(function Word({
+  word,
+  visible,
+  showCaret,
+}: {
+  word: string;
+  visible: boolean;
+  showCaret: boolean;
+}) {
+  return (
+    <>
+      <span
+        className={
+          visible ? 'text-gray-700 transition-[color] duration-200' : 'text-transparent select-none'
+        }
+      >
+        {word}
+      </span>
+      {showCaret ? (
+        <span
+          className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-primary-navy/50 align-[-0.08em]"
+          aria-hidden
+        />
+      ) : null}
+    </>
+  );
+});
+
 /**
  * Reveals words in order as scroll progress advances through the target (scroll-linked).
  * Full text is available to screen readers via sr-only; animated layer is aria-hidden.
@@ -111,21 +139,7 @@ export const ScrollLinkedWordReveal: React.FC<Props> = ({
                 return (
                   <React.Fragment key={`${bi}-${wi}`}>
                     {wi > 0 ? ' ' : null}
-                    <span
-                      className={
-                        visible
-                          ? 'text-gray-700 transition-[color] duration-200'
-                          : 'text-transparent select-none'
-                      }
-                    >
-                      {word}
-                    </span>
-                    {isLastVisible && showCaret ? (
-                      <span
-                        className="ml-0.5 inline-block h-[1em] w-px animate-pulse bg-primary-navy/50 align-[-0.08em]"
-                        aria-hidden
-                      />
-                    ) : null}
+                    <Word word={word} visible={visible} showCaret={isLastVisible && showCaret} />
                   </React.Fragment>
                 );
               })}

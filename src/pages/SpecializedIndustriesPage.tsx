@@ -56,7 +56,7 @@ const SpecializedIndustriesPage: React.FC = () => {
       name: 'Energy & Oil',
       description: 'Specialized travel solutions for energy sector professionals working in challenging environments.',
       icon: Zap,
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=70',
       specialties: ['Offshore Travel', 'Remote Locations', 'Safety Protocols', 'Emergency Response'],
       challenges: ['Remote Locations', 'Safety Requirements', 'Weather Dependencies', 'Regulatory Compliance'],
       solutions: ['Dedicated Safety Protocols', 'Emergency Response Plans', 'Weather Monitoring', 'Compliance Management'],
@@ -71,7 +71,7 @@ const SpecializedIndustriesPage: React.FC = () => {
       name: 'Marine & Shipping',
       description: 'Expert maritime travel and logistics management for shipping and marine operations.',
       icon: Anchor,
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=70',
       specialties: ['Port Logistics', 'Crew Management', 'Cargo Coordination', 'International Regulations'],
       challenges: ['Port Schedules', 'Crew Rotation', 'International Regulations', 'Cargo Coordination'],
       solutions: ['Port Coordination', 'Crew Management Systems', 'Regulatory Compliance', 'Logistics Optimization'],
@@ -86,7 +86,7 @@ const SpecializedIndustriesPage: React.FC = () => {
       name: 'Construction',
       description: 'Tailored solutions for construction and engineering projects with complex logistics.',
       icon: HardHat,
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=70',
       specialties: ['Project Sites', 'Equipment Transport', 'Team Coordination', 'Safety Compliance'],
       challenges: ['Project Timelines', 'Equipment Logistics', 'Team Coordination', 'Safety Requirements'],
       solutions: ['Project-Based Planning', 'Equipment Coordination', 'Team Management', 'Safety Protocols'],
@@ -101,7 +101,7 @@ const SpecializedIndustriesPage: React.FC = () => {
       name: 'Technology',
       description: 'Modern travel solutions for tech companies and startups with flexible requirements.',
       icon: Laptop,
-      image: '/technology-image.jpg',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=70',
       specialties: ['Conference Travel', 'Client Meetings', 'Team Retreats', 'Innovation Hubs'],
       challenges: ['Flexible Schedules', 'Last-Minute Changes', 'Remote Work Integration', 'Cost Optimization'],
       solutions: ['Flexible Booking', 'Real-Time Changes', 'Remote Integration', 'Cost Management'],
@@ -160,7 +160,7 @@ const SpecializedIndustriesPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -249,7 +249,7 @@ const SpecializedIndustriesPage: React.FC = () => {
               >
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={industry.image}
                       alt={industry.name}
                       className="w-full h-80 object-cover"

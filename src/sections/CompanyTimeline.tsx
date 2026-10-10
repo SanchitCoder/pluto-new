@@ -1,5 +1,5 @@
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Award, Users, Globe, TrendingUp, Star, Building, Plane } from 'lucide-react';
 import Container from '../components/Container';
 import SectionHeader from '../components/SectionHeader';
@@ -35,8 +35,6 @@ type ScrollLinkedCardProps = {
   getCategoryLabel: (category: string) => string;
 };
 
-const scrollSpring = { stiffness: 64, damping: 28, mass: 0.45 };
-
 /**
  * Scroll-linked card with eased fade-in / fade-out: spring-smoothed progress
  * plus dedicated opacity ramps at enter and exit.
@@ -56,7 +54,7 @@ function ScrollLinkedTimelineCard({
     offset: ['start end', 'end start'],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, scrollSpring);
+  const smoothProgress = scrollYProgress;
 
   const side = index % 2 === 0 ? -1 : 1;
   // Fade in (bottom → center), hold, fade out (center → top)

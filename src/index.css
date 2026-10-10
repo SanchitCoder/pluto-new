@@ -157,11 +157,10 @@
     width: 220%;
     aspect-ratio: 1;
     pointer-events: none;
-    will-change: transform, opacity;
     z-index: 1;
     opacity: 0;
     transition: opacity 0.3s ease;
-    animation: client-review-shimmer-spin 5.5s linear infinite;
+    animation: none;
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
@@ -178,7 +177,8 @@
 
   .group:hover .services-grid-shimmer-ring {
     opacity: 1;
-    animation-duration: 2.75s;
+    will-change: transform, opacity;
+    animation: client-review-shimmer-spin 2.75s linear infinite;
     background: conic-gradient(
       from 0deg,
       transparent 0deg,
@@ -291,6 +291,36 @@
       animation: none;
     }
     .luna-ai-fab-shell:hover .luna-ai-fab-spin {
+      animation: none;
+    }
+  }
+
+  /* Skip layout/paint of below-the-fold sections until they approach the viewport (big win on long pages).
+     Only for sections with no fixed-position children, modals, or scroll-linked targets. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
+  /* Sections flagged off-screen by FadeInSection: stop always-running animations so they cost nothing */
+  [data-offscreen='true'] .client-review-shimmer-ring,
+  [data-offscreen='true'] .animate-pulse,
+  [data-offscreen='true'] .animate-float {
+    animation-play-state: paused;
+  }
+
+  /* AI button sparkle: compositor-only transform/opacity (was a JS-driven infinite animation) */
+  @keyframes luna-star-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.18); opacity: 1; }
+  }
+
+  .luna-ai-star {
+    animation: luna-star-pulse 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .luna-ai-star {
       animation: none;
     }
   }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SITE } from '../lib/siteConfig';
 import { motion } from 'framer-motion';
 import {
   Heart, 
@@ -60,7 +61,7 @@ const PersonalTravelPage: React.FC = () => {
       description: 'Luxury travel experiences with personalized service and exclusive access.',
       icon: Crown,
       features: ['Personal Travel Consultant', 'Exclusive Access', 'Luxury Accommodations', 'VIP Services'],
-      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=70'
     },
     {
       id: '2',
@@ -68,7 +69,7 @@ const PersonalTravelPage: React.FC = () => {
       description: 'Curated vacation packages designed for unforgettable family and personal getaways.',
       icon: Star,
       features: ['All-Inclusive Packages', 'Family-Friendly Options', 'Romantic Getaways', 'Adventure Tours'],
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=70'
     },
     {
       id: '3',
@@ -76,7 +77,7 @@ const PersonalTravelPage: React.FC = () => {
       description: 'Core travel services including flights, hotels, and ground transportation.',
       icon: Globe,
       features: ['Flight Bookings', 'Hotel Reservations', 'Car Rentals', 'Travel Insurance'],
-      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=70'
     }
   ];
 
@@ -122,7 +123,7 @@ const PersonalTravelPage: React.FC = () => {
       location: 'Dubai, UAE',
       text: 'Pluto Travels created the most magical honeymoon for us. Every detail was perfect, from the private beach dinner to the luxury suite upgrade.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80'
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=70'
     },
     {
       id: '2',
@@ -130,7 +131,7 @@ const PersonalTravelPage: React.FC = () => {
       location: 'Abu Dhabi, UAE',
       text: 'The family vacation they planned for us was incredible. Our kids are still talking about the safari experience and the luxury resort.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80'
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=70'
     },
     {
       id: '3',
@@ -138,13 +139,13 @@ const PersonalTravelPage: React.FC = () => {
       location: 'Dubai, UAE',
       text: 'As a solo traveler, I felt completely safe and supported. They arranged everything perfectly and I had the adventure of a lifetime.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80'
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=70'
     }
   ];
 
   const stats = [
     { icon: Heart, value: '10,000+', label: 'Happy Families' },
-    { icon: Star, value: '4.9/5', label: 'Average Rating' },
+    { icon: Star, value: `${SITE.aggregateRating.ratingValue}/5`, label: 'Average Rating' },
     { icon: Globe, value: '100+', label: 'Destinations' },
     { icon: Award, value: '15+', label: 'Years Experience' },
   ];
@@ -158,7 +159,7 @@ const PersonalTravelPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-luxury-darkBlue/80 via-primary-navy/60 to-transparent" />
@@ -247,7 +248,7 @@ const PersonalTravelPage: React.FC = () => {
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover"
@@ -371,7 +372,7 @@ const PersonalTravelPage: React.FC = () => {
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover"

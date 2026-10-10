@@ -25,6 +25,7 @@ const Footer: React.FC = () => {
   ];
 
   const popular = [
+    { name: 'Book a Travel Consultation', href: '/travel-consultation' },
     { name: 'Qatar Visa from Dubai', href: '/qatar-visa-from-dubai' },
     { name: 'Bishkek Packages', href: '/bishkek-holiday-packages-dubai' },
     { name: 'Group Travel Booking', href: '/group-travel-booking-dubai' },
@@ -32,7 +33,8 @@ const Footer: React.FC = () => {
   ];
 
   const company = [
-    { name: 'About Us', href: '/#about' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Terms & Conditions', href: '/terms-and-conditions' },
@@ -44,15 +46,15 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-4 mb-6">
-              <img
+              <img decoding="async"
                 src="/Pluto_Final_logo.png"
                 alt="Pluto Travels LLC — IATA travel agency Dubai"
                 className="h-10 sm:h-12 md:h-14 w-auto"
                 loading="lazy"
               />
               <div className="h-8 w-px bg-white/30" />
-              <img
-                src="/Banner-Pluto.jpeg"
+              <img decoding="async"
+                src="/Banner-Pluto.webp"
                 alt="Pluto Travels Dubai corporate and luxury travel"
                 className="h-8 w-auto max-w-[120px] object-contain"
                 loading="lazy"

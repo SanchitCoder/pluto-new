@@ -2,8 +2,39 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { FadeInSection } from '../components/FadeInSection';
+import PageFAQSection from '../components/PageFAQSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+
+const CONTACT_FAQS = [
+  {
+    question: 'What is the fastest way to get a travel quote from Pluto Travels?',
+    answer:
+      'Call or WhatsApp our Business Bay team directly at +971 50 911 0065, or fill in the enquiry form on this page with your travel dates and requirements. For corporate accounts, calling +971 4 392 0930 connects you straight to a consultant who can start pulling fare and hotel options while you talk.',
+  },
+  {
+    question: 'Is support available outside normal office hours?',
+    answer:
+      'Yes. Alongside our Business Bay office hours, our team provides 24/7 support for travellers already on a trip — flight disruptions, last-minute changes and emergencies are handled around the clock via the mobile/WhatsApp number above.',
+  },
+  {
+    question: 'Do you handle both corporate and personal travel enquiries?',
+    answer:
+      'Yes. The same contact channels cover corporate travel management, MICE and event enquiries, luxury and leisure holidays, and outbound visa assistance. Let us know what you need in your message and we will route it to the right specialist.',
+  },
+  {
+    question: 'Can I visit your Business Bay office without booking an appointment?',
+    answer:
+      'Walk-ins are welcome during office hours, but booking a short appointment in advance means a consultant familiar with your request will be ready for you — useful for corporate travel policy discussions or detailed visa consultations.',
+  },
+  {
+    question: 'How quickly will someone respond to my enquiry?',
+    answer:
+      'Enquiries submitted during office hours are typically answered the same day. Urgent requests — a same-day flight issue or an active visa deadline — should go straight to the WhatsApp/mobile line for the fastest response.',
+  },
+];
 
 interface FormData {
   name: string;
@@ -445,6 +476,11 @@ const ContactPage: React.FC = () => {
           </motion.div>
         </Container>
       </FadeInSection>
+
+      <PageFAQSection faqs={CONTACT_FAQS} subtitle="Common questions about reaching Pluto Travels and what to expect." />
+      <JsonLdSchema pathname="/contact" type="FAQPage" variant="faq-only" faqs={CONTACT_FAQS} />
+
+      <Footer />
     </div>
   );
 };

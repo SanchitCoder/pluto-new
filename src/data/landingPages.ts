@@ -30,7 +30,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'travel-agency-business-bay-dubai',
     h1: 'Travel Agency in Business Bay, Dubai',
     subtitle: 'IATA-accredited corporate & luxury travel — Office 2805, Prism Tower',
-    heroImage: '/corporate-travel-terminal.png',
+    heroImage: '/corporate-travel-terminal.webp',
     heroImageAlt: 'Pluto Travels corporate travel agency office Business Bay Dubai',
     icon: MapPin,
     intro: [
@@ -60,7 +60,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'corporate-travel-energy',
     h1: 'Corporate Travel for Energy & Oil/Gas Sector UAE',
     subtitle: 'Offshore rotations, remote sites & safety-compliant travel logistics',
-    heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=70',
     heroImageAlt: 'Energy sector corporate travel offshore oil gas UAE',
     icon: Zap,
     intro: [
@@ -88,7 +88,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'marine-crew-travel-dubai',
     h1: 'Marine & Crew Travel Dubai',
     subtitle: 'Crew rotation, port logistics & shipping sector travel management',
-    heroImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1600&q=70',
     heroImageAlt: 'Marine crew travel management shipping port Dubai',
     icon: Anchor,
     intro: [
@@ -116,7 +116,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'mining-sector-travel',
     h1: 'Mining Sector Corporate Travel UAE',
     subtitle: 'Project site logistics, team rotations & remote operations support',
-    heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=70',
     heroImageAlt: 'Mining sector corporate travel project site UAE',
     icon: HardHat,
     intro: [
@@ -143,7 +143,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'sports-team-travel',
     h1: 'Sports Team & Event Travel Management UAE',
     subtitle: 'Fixtures, tournaments, MICE logistics & group travel for sports organizations',
-    heroImage: 'https://images.unsplash.com/photo-1574629810360-7dfe2e195786?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600&q=70',
     heroImageAlt: 'Sports team travel management UAE tournaments events',
     icon: Trophy,
     intro: [
@@ -170,7 +170,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'qatar-visa-from-dubai',
     h1: 'Qatar Visa from Dubai',
     subtitle: 'Hayya, tourist & business visas — application support for UAE residents',
-    heroImage: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=70',
     heroImageAlt: 'Qatar visa application from Dubai UAE residents',
     icon: FileText,
     intro: [
@@ -197,7 +197,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'bishkek-holiday-packages-dubai',
     h1: 'Bishkek Holiday Packages from Dubai',
     subtitle: 'Kyrgyzstan city breaks, mountain escapes & curated tours for UAE travelers',
-    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=70',
     heroImageAlt: 'Bishkek Kyrgyzstan holiday packages from Dubai',
     icon: Mountain,
     intro: [
@@ -224,7 +224,7 @@ export const LANDING_PAGES: Record<string, LandingPageConfig> = {
     slug: 'group-travel-booking-dubai',
     h1: 'Group Travel Booking Dubai',
     subtitle: 'Corporate delegations, incentives, family groups & event travel',
-    heroImage: '/global-business-travel-package.png',
+    heroImage: '/global-business-travel-package.webp',
     heroImageAlt: 'Group travel booking corporate delegations Dubai',
     icon: Plane,
     intro: [

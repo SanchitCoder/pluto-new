@@ -11,6 +11,25 @@ import MobileBottomCTA from '../components/MobileBottomCTA';
 import ConsultationModal from '../components/ConsultationModal';
 import CorporateAuditModal from '../components/CorporateAuditModal';
 import { FadeInSection } from '../components/FadeInSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+import SEOHead from '../components/SEOHead';
+
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+/**
+ * "Sep 14, 2026" -> "2026-09-14" for schema.org datePublished/dateModified.
+ * Parses the month/day/year manually rather than via `new Date(display)` — that path interprets the
+ * string as local-timezone midnight, so `.toISOString()` can shift the date back a day for any
+ * timezone ahead of UTC (observed: "Sep 10, 2026" became "2026-09-09" when built from UTC+5:30).
+ */
+function toIsoDate(display: string): string {
+  const match = display.match(/^([A-Za-z]{3})[a-z]*\s+(\d{1,2}),\s*(\d{4})$/);
+  if (!match) return new Date().toISOString().slice(0, 10);
+  const [, monAbbr, day, year] = match;
+  const monthIndex = MONTHS.indexOf(monAbbr.toLowerCase());
+  if (monthIndex === -1) return new Date().toISOString().slice(0, 10);
+  return `${year}-${String(monthIndex + 1).padStart(2, '0')}-${day.padStart(2, '0')}`;
+}
 
 interface BlogData {
   id: string;
@@ -44,6 +63,157 @@ const BlogDetailPage: React.FC = () => {
 
   // Mock blog data - in a real app, this would come from an API
   const blogs: BlogData[] = [
+    {
+      id: 'dubai-visa-vs-uae-visa-is-there-a-difference',
+      image: '/visa-images/middle-east/uae.webp',
+      title: 'Dubai Visa vs UAE Visa: Is There a Difference?',
+      excerpt:
+        'Is a Dubai visa different from a UAE visa? Learn how the terms relate, the types of UAE visas, validity vs duration of stay, single vs multiple entry, and what to check before you travel.',
+      author: 'Travel Team',
+      date: 'Sep 14, 2026',
+      category: 'Visa & Travel',
+      readTime: '9 min read',
+      tags: [
+        'Dubai Visa',
+        'UAE Visa',
+        'UAE Tourist Visa',
+        'Visa Requirements',
+        'Dubai',
+        'Travel Tips',
+        'Pluto Travels',
+      ],
+      content: [
+        'If you are planning a trip to Dubai, you may have come across two terms that appear to mean the same thing: Dubai visa and UAE visa. So, is there actually a difference between a Dubai visa and a UAE visa?',
+        'In most travel situations, the answer is no. When people refer to a Dubai visa, they are generally referring to a UAE visa that allows them to enter Dubai. Dubai is one of the seven emirates that make up the United Arab Emirates, and visas for entry into Dubai are part of the UAE\'s wider immigration system.',
+        'However, there are important details to understand depending on your nationality, purpose of travel, visa type and the emirate through which you are entering the country.',
+        'This guide explains the difference between a Dubai visa and a UAE visa, the different types of UAE visas, who needs one, and what travellers should check before making their travel arrangements.',
+        '1. Dubai Visa vs UAE Visa: The Basic Difference',
+        'The easiest way to understand the difference is this: Dubai is an emirate. The UAE is the country.',
+        'The United Arab Emirates consists of seven emirates:',
+        '• Dubai',
+        '• Abu Dhabi',
+        '• Sharjah',
+        '• Ajman',
+        '• Umm Al Quwain',
+        '• Ras Al Khaimah',
+        '• Fujairah',
+        'Dubai is therefore not a separate country with its own independent immigration system. When someone says they need a Dubai visa, they usually mean they need a visa to enter the United Arab Emirates through Dubai.',
+        'Similarly, terms such as "UAE tourist visa", "Dubai tourist visa", "Dubai visit visa" and "UAE visit visa" are often used interchangeably in everyday travel conversations.',
+        'The terminology can be confusing because different travel websites, airlines, travel agencies and travellers may use slightly different terms for the same or similar visa categories.',
+        '2. Is a Dubai Visa the Same as a UAE Visa?',
+        'For most visitors travelling to Dubai, a Dubai visa is essentially a UAE entry visa that permits them to enter the country.',
+        'For example, if you are travelling from India to Dubai for a holiday and your nationality requires you to obtain a visa before travelling, you would generally apply for the appropriate UAE visa for your trip. Once approved, that visa allows you to enter the UAE, subject to the conditions attached to the visa.',
+        'This is why you may see a visa referred to as a:',
+        '• Dubai visa',
+        '• UAE visa',
+        '• Dubai tourist visa',
+        '• UAE tourist visa',
+        '• Dubai visit visa',
+        '• UAE visit visa',
+        'The exact terminology may vary, but travellers should focus on the actual visa category, validity, permitted stay and entry conditions rather than the name used to describe it.',
+        '3. Why Do People Call It a Dubai Visa?',
+        'Dubai is one of the world\'s most popular destinations for international visitors. Because millions of travellers visit Dubai for holidays, business meetings, shopping, events and stopovers, the phrase "Dubai visa" has become widely used.',
+        'For many travellers, Dubai is also their first point of entry into the UAE. This has made "Dubai visa" a common search term, even though Dubai is part of the UAE.',
+        'For example, someone searching online for Dubai tourist visa requirements may actually be looking for information about the UAE tourist visa requirements applicable to their nationality and travel circumstances. Understanding this distinction can make it easier to identify the correct visa information before travelling.',
+        '4. Do All Travellers Need a UAE Visa to Visit Dubai?',
+        'No. Whether you need to arrange a UAE visa before travelling depends on factors such as your nationality and eligibility for visa-free entry, visa on arrival or a visa that must be obtained before travel.',
+        'Some nationalities may be eligible for visa-free entry or a visa on arrival, while others may need to arrange a visa before travelling to the UAE.',
+        'Because entry requirements can change, travellers should always verify the requirements applicable to their passport before making travel arrangements. If you are unsure whether you need a visa, checking your eligibility before booking your trip can help avoid unnecessary complications later.',
+        '5. What Types of UAE Visas Are Available?',
+        'The UAE has different visa and entry options depending on the purpose and circumstances of the traveller. The appropriate category may vary depending on whether you are visiting for tourism, business, visiting family or friends, working, studying or another permitted purpose.',
+        'For short-term visitors, tourist and visit visas are among the most commonly discussed options.',
+        'UAE Tourist Visa',
+        'A UAE tourist visa is generally used by travellers visiting the country for tourism and leisure. Depending on the available visa category and the traveller\'s eligibility, different durations and entry options may be available.',
+        'Travellers should check the specific conditions of the visa before travelling, including the permitted duration of stay and whether it allows single or multiple entry.',
+        'UAE Visit Visa',
+        'A UAE visit visa may be used for visitors travelling to the UAE for purposes such as visiting family or friends or other permitted short-term activities. The exact requirements depend on the visa category and the circumstances of the traveller.',
+        'Multiple-Entry UAE Visa',
+        'A multiple-entry visa can be useful for travellers who expect to enter the UAE more than once during the visa\'s validity period. This can be particularly relevant for frequent visitors, regional business travellers and people who regularly travel between the UAE and other countries.',
+        'The important point is that visa validity and permitted duration of stay are not necessarily the same thing. Travellers should always check both before making plans.',
+        '6. What Is the Difference Between a Dubai Tourist Visa and a UAE Tourist Visa?',
+        'In everyday travel language, there is generally no meaningful difference between the two terms. A Dubai tourist visa normally refers to a tourist visa used to enter Dubai, while a UAE tourist visa refers to the country\'s visa more broadly.',
+        'The distinction becomes important when travellers start researching visa requirements and assume that Dubai has a completely separate visa system from the rest of the UAE. It does not.',
+        'If you are travelling to Dubai for tourism, the relevant immigration requirements are UAE requirements. This also means that if your itinerary includes other emirates, such as Abu Dhabi or Sharjah, you should not assume that you need a separate tourist visa simply because you are visiting another emirate.',
+        '7. Can You Travel to Abu Dhabi With a Dubai Visa?',
+        'A common question is whether a traveller who has obtained a visa for a trip to Dubai can also visit Abu Dhabi or other emirates.',
+        'The UAE is one country made up of seven emirates, so a traveller does not normally need a separate tourist visa simply because they are travelling between Dubai and Abu Dhabi. However, the conditions of the specific visa and current UAE entry regulations still apply.',
+        'For example, if you enter the UAE through Dubai and then travel to Abu Dhabi for a business meeting or holiday, you are travelling within the same country. This is different from travelling from the UAE to another country, where separate entry requirements may apply.',
+        '8. Dubai Visa Requirements: What Should You Check?',
+        'Before applying for a UAE visa, travellers should carefully review the requirements applicable to their nationality and visa category. Common requirements may include:',
+        '• A valid passport',
+        '• Passport-size photograph',
+        '• Completed application details',
+        '• Proof of travel or accommodation where applicable',
+        '• Supporting documents depending on the visa category',
+        '• Additional documents where requested by the relevant authorities or visa processing channel',
+        'Passport validity is particularly important. Travellers should also make sure that names, passport numbers, dates of birth and other information are entered correctly. Even a simple discrepancy can create unnecessary delays or complications during the visa process.',
+        'Because requirements can vary, it is important not to rely on an old application, a friend\'s experience or information found on an unrelated website.',
+        '9. Dubai Visa Validity vs Duration of Stay',
+        'One of the most common areas of confusion when applying for a UAE visa is the difference between visa validity and duration of stay. These are not necessarily the same thing.',
+        'Visa validity generally refers to the period during which the visa can be used for entry, while the duration of stay refers to how long the traveller is permitted to remain in the UAE under the conditions of that visa.',
+        'For example, a visa may be valid for entry during a particular period while allowing a specified number of days of stay. Travellers should always check the conditions stated on their approved visa rather than assuming that the visa validity automatically means they can remain in the UAE for the entire validity period.',
+        '10. Single-Entry vs Multiple-Entry UAE Visa',
+        'Another important distinction is whether the visa permits a single entry or multiple entries.',
+        'Single-entry visa',
+        'A single-entry visa is generally intended for one entry into the UAE. If you leave the UAE after using the visa, you should not assume that you can use the same visa to enter again.',
+        'Multiple-entry visa',
+        'A multiple-entry visa can allow eligible travellers to enter the UAE more than once during the applicable validity period, subject to the conditions of the visa. This can be useful for travellers with frequent UAE visits, regional business commitments or itineraries that involve leaving and returning to the country.',
+        'The right option depends on the traveller\'s plans.',
+        '11. Can You Extend a Dubai or UAE Visa?',
+        'Some UAE visa categories may provide options for extension or a change of status, depending on the specific visa and the applicable immigration rules. However, travellers should not assume that every visa can automatically be extended.',
+        'If you are planning a longer stay, it is better to understand the conditions of your visa before travelling rather than waiting until the end of your permitted stay.',
+        'If your circumstances change while you are in the UAE, professional visa assistance can help you understand the available options and documentation requirements.',
+        '12. What Happens If Your Dubai Visa Is Rejected?',
+        'A visa application can sometimes be delayed or rejected for a number of reasons. The outcome depends on the individual application and the relevant immigration requirements. Potential issues can include incorrect or incomplete information, documentation problems or other eligibility considerations.',
+        'If an application is not approved, travellers should avoid immediately submitting another application with the same information without first understanding what may have caused the issue. Reviewing the application and supporting documents carefully can help identify potential problems before taking the next step.',
+        '13. Should You Book Your Flight Before Getting Your UAE Visa?',
+        'This is an important consideration for travellers who need to apply for a UAE visa before travelling. Before purchasing a non-refundable flight, travellers should understand the expected visa processing timeline and the terms attached to their booking.',
+        'Visa processing times can vary, and approval is not something travellers should assume simply because they have submitted an application.',
+        'For international travel, it is also important to consider hotel bookings, travel insurance, airport transfers and other arrangements alongside the visa timeline. This is particularly relevant for business travellers who may have fixed meeting dates or event schedules.',
+        '14. Dubai Visa for Business Travellers',
+        'Dubai is a major business and commercial hub, so many visitors arrive for meetings, conferences, exhibitions, corporate events and short business trips. For business travellers, visa planning is only one part of the journey. A company may also need to coordinate:',
+        '• Flights',
+        '• Hotel accommodation',
+        '• Airport transfers',
+        '• Travel insurance',
+        '• Meeting schedules',
+        '• Visa documentation',
+        '• Changes or cancellations',
+        '• Traveller preferences',
+        '• Ground transportation',
+        'A missed visa requirement can affect an entire business itinerary, particularly when the traveller has a fixed meeting or event date. This is one reason companies with frequent international travel often choose to manage visa arrangements alongside their wider [corporate travel programme](/corporate-travel).',
+        '15. Dubai Visa and UAE Visa: The Key Takeaway',
+        'So, is there a difference between a Dubai visa and a UAE visa? In most everyday travel situations, no.',
+        'Dubai is one of the seven emirates that make up the United Arab Emirates. When travellers talk about a Dubai visa, they are generally referring to a UAE visa that allows them to enter Dubai. The more important questions are:',
+        '• Do you need a visa based on your nationality?',
+        '• Which UAE visa category applies to your trip?',
+        '• How long is the visa valid?',
+        '• How long can you stay?',
+        '• Is it single-entry or multiple-entry?',
+        '• What documents are required?',
+        '• Do you need to obtain the visa before travelling?',
+        '• Are there any specific conditions that apply to your application?',
+        'Getting these details right before travelling can make the rest of the journey considerably easier.',
+        '16. Planning a Trip to Dubai?',
+        'Whether you are travelling to Dubai for a holiday, business meeting, family visit or an event, visa requirements should be considered early in the planning process.',
+        'At Pluto Travels, our visa assistance team supports travellers with UAE and international visa requirements, including document guidance, application assistance and travel coordination. For travellers who are unsure which visa requirements apply to their journey, getting the right guidance before making travel arrangements can help prevent avoidable delays and last-minute complications.',
+        'For more information, explore our [UAE Visa Services](/visa/middle-east) or [speak with the Pluto Travels team](/contact) about your upcoming travel requirements.',
+      ],
+      relatedPosts: [
+        {
+          id: 'schengen-visa-rejection-reasons-common-mistakes',
+          title: 'Schengen Visa Rejection Reasons: 15 Common Mistakes and How to Avoid Them',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
+          date: 'Sep 10, 2026',
+        },
+        {
+          id: 'top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
+          title: 'Top Visa Free and Visa on Arrival Destinations for UAE Residents in 2026',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
+          date: 'Mar 2, 2026',
+        },
+      ],
+    },
     {
       id: 'best-eid-staycation-deals-uae-2026',
       image: '/eid-al-fitr-deals.gif',
@@ -114,20 +284,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'eid-al-fitr-travel-top-destinations-2026',
           title: 'Eid Al Fitr Travel: Top Destinations to Explore in 2026',
-          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
           date: 'Jan 20, 2026',
         },
         {
           id: 'best-luxury-staycation-fujairah-48-hour-escape',
           title: 'Best Luxury Staycation in Fujairah: Your Perfect 48-Hour Escape',
-          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70',
           date: 'Jun 5, 2026',
         },
       ],
     },
     {
       id: 'plan-unforgettable-luxury-celebrations-corporate-events-2026',
-      image: '/mice-events-conference.png',
+      image: '/mice-events-conference.webp',
       title: 'How to Plan Unforgettable Luxury Celebrations & Corporate Events in 2026',
       excerpt:
         'From milestone birthdays to corporate galas and incentive trips — how Pluto Travels & Pluto Events create luxury celebrations and MICE experiences in the UAE.',
@@ -200,20 +370,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'mice-dubai-planners-guide-2026',
           title: 'MICE in Dubai: A Planner\'s Guide (2026)',
-          image: '/mice-events-conference.png',
+          image: '/mice-events-conference.webp',
           date: 'Jun 5, 2026',
         },
         {
           id: 'best-time-plan-corporate-incentive-trips-uae',
           title: 'Best Time to Plan Corporate Incentive Trips from the UAE',
-          image: '/global-business-travel-package.png',
+          image: '/global-business-travel-package.webp',
           date: 'Jun 5, 2026',
         },
       ],
     },
     {
       id: '7-common-travel-booking-mistakes-how-to-avoid',
-      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=70',
       title: '7 Common Travel Booking Mistakes and How to Avoid Them',
       excerpt:
         'Avoid the seven booking mistakes that cause missed flights, visa issues, and extra costs — expert tips for stress-free travel from Dubai and the UAE.',
@@ -330,20 +500,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'what-happens-if-you-miss-your-flight-travel-guide',
           title: 'What Happens If You Miss Your Flight? Complete Guide',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jun 5, 2026',
         },
         {
           id: 'how-to-find-cheap-flights-without-sacrificing-comfort',
           title: 'How to Find Cheap Flights Without Sacrificing Comfort',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jun 5, 2026',
         },
       ],
     },
     {
       id: 'what-happens-if-you-miss-your-flight-travel-guide',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=70',
       title: 'What Happens If You Miss Your Flight? Complete Guide for Travelers',
       excerpt:
         'Missed your flight? Stay calm and act fast — rebooking options, ticket types, costs, insurance, and how to avoid missing flights from Dubai and the UAE.',
@@ -429,20 +599,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'how-to-find-cheap-flights-without-sacrificing-comfort',
           title: 'How to Find Cheap Flights Without Sacrificing Comfort',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jun 5, 2026',
         },
         {
           id: 'corporate-travel-policy-guide-uae-companies',
           title: 'Corporate Travel Policy Guide for UAE Companies (2026)',
-          image: '/corporate-travel-management.png',
+          image: '/corporate-travel-management.webp',
           date: 'Jun 5, 2026',
         },
       ],
     },
     {
       id: 'luxury-travel-trends-2026-experiences-over-hotel-stays',
-      image: 'https://images.unsplash.com/photo-1540541338287-41700907dda6?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=70',
       title: 'Luxury Travel Trends 2026: Why Experiences Are Replacing Traditional Hotel Stays',
       excerpt:
         'How luxury travel is shifting from five-star stays to curated experiences — personalization, private dining, yacht escapes, and what HNI travellers value in 2026.',
@@ -518,20 +688,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'best-luxury-staycation-fujairah-48-hour-escape',
           title: 'Best Luxury Staycation in Fujairah: Your Perfect 48-Hour Escape',
-          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70',
           date: 'Jun 5, 2026',
         },
         {
           id: 'how-to-find-cheap-flights-without-sacrificing-comfort',
           title: 'How to Find Cheap Flights Without Sacrificing Comfort',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jun 5, 2026',
         },
       ],
     },
     {
       id: 'how-to-find-cheap-flights-without-sacrificing-comfort',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=70',
       title: 'How to Find Cheap Flights Without Sacrificing Comfort: Proven Tips to Save Money on Airfare',
       excerpt:
         'Practical strategies to find affordable flights from the UAE without rough travel — timing, flexibility, smart search, hidden fees, and when expert help saves more.',
@@ -609,20 +779,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'best-affordable-travel-destinations-2026',
           title: 'Best Affordable Travel Destinations for 2026',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70',
           date: 'Jan 15, 2026',
         },
         {
           id: 'top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
           title: 'Top Visa Free and Visa on Arrival Destinations for UAE Residents in 2026',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Mar 2, 2026',
         },
       ],
     },
     {
       id: 'best-luxury-staycation-fujairah-48-hour-escape',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=70',
       title: 'Best Luxury Staycation in Fujairah: Your Perfect 48-Hour Escape',
       excerpt:
         'Discover Fujairah — the UAE\'s underrated luxury staycation. Beachfront resorts, mountain views, diving, wellness, and a complete 48-hour itinerary from Dubai.',
@@ -732,20 +902,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'ultimate-travel-guide-best-things-to-do-dubai-2026',
           title: 'Ultimate Travel Guide: Best Things to Do in Dubai in 2026',
-          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70',
           date: 'Mar 2, 2026',
         },
         {
           id: 'best-affordable-travel-destinations-2026',
           title: 'Best Affordable Travel Destinations for 2026',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70',
           date: 'Jan 15, 2026',
         },
       ],
     },
     {
       id: 'corporate-travel-policy-guide-uae-companies',
-      image: '/corporate-travel-management.png',
+      image: '/corporate-travel-management.webp',
       title: 'Corporate Travel Policy Guide for UAE Companies (2026)',
       excerpt:
         'Build a corporate travel policy that controls spend, ensures duty of care, and keeps UAE teams compliant — approvals, budgets, booking rules, and best practices.',
@@ -783,13 +953,13 @@ const BlogDetailPage: React.FC = () => {
         'A corporate travel policy protects your people, your budget, and your reputation. Review it annually and align it with how your business actually travels.',
       ],
       relatedPosts: [
-        { id: 'why-uae-companies-switching-corporate-travel-management-2026', title: 'Why UAE Companies Switch to Corporate Travel Management', image: '/corporate-travel-management-card.png', date: 'May 18, 2026' },
-        { id: 'corporate-travel-management-best-practices-2026-part1', title: 'Corporate Travel Best Practices 2026 - Part 1', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80', date: 'Jan 12, 2026' },
+        { id: 'why-uae-companies-switching-corporate-travel-management-2026', title: 'Why UAE Companies Switch to Corporate Travel Management', image: '/corporate-travel-management-card.webp', date: 'May 18, 2026' },
+        { id: 'corporate-travel-management-best-practices-2026-part1', title: 'Corporate Travel Best Practices 2026 - Part 1', image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70', date: 'Jan 12, 2026' },
       ],
     },
     {
       id: 'mice-dubai-planners-guide-2026',
-      image: '/mice-events-conference.png',
+      image: '/mice-events-conference.webp',
       title: 'MICE in Dubai: A Planner\'s Guide (2026)',
       excerpt:
         'Plan successful MICE events in Dubai — venues, visas, incentives, logistics, and local regulations. A practical guide for corporate event teams.',
@@ -819,13 +989,13 @@ const BlogDetailPage: React.FC = () => {
         'Successful MICE in Dubai combines early planning, local expertise, and flawless delegate logistics. The right partner turns ambitious event goals into measurable business outcomes.',
       ],
       relatedPosts: [
-        { id: 'best-time-plan-corporate-incentive-trips-uae', title: 'Best Time to Plan Corporate Incentive Trips from the UAE', image: '/global-business-travel-package.png', date: 'Jun 5, 2026' },
-        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.png', date: 'Jun 5, 2026' },
+        { id: 'best-time-plan-corporate-incentive-trips-uae', title: 'Best Time to Plan Corporate Incentive Trips from the UAE', image: '/global-business-travel-package.webp', date: 'Jun 5, 2026' },
+        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.webp', date: 'Jun 5, 2026' },
       ],
     },
     {
       id: 'how-to-choose-corporate-travel-agency-dubai-10-questions',
-      image: '/business-analytics-suite.png',
+      image: '/business-analytics-suite.webp',
       title: 'How to Choose the Right Corporate Travel Agency in Dubai: 10 Questions to Ask',
       excerpt:
         'The 10 questions every UAE company should ask before signing with a corporate travel agency in Dubai — support, technology, cost control, reporting, and duty of care.',
@@ -1002,13 +1172,13 @@ const BlogDetailPage: React.FC = () => {
         'Need help managing your company\'s business travel? [Get in touch with Pluto Travels](/contact) to discuss your requirements.',
       ],
       relatedPosts: [
-        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.png', date: 'Jun 5, 2026' },
-        { id: 'why-uae-companies-switching-corporate-travel-management-2026', title: 'Why UAE Companies Switch to Corporate Travel Management', image: '/corporate-travel-management-card.png', date: 'May 18, 2026' },
+        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.webp', date: 'Jun 5, 2026' },
+        { id: 'why-uae-companies-switching-corporate-travel-management-2026', title: 'Why UAE Companies Switch to Corporate Travel Management', image: '/corporate-travel-management-card.webp', date: 'May 18, 2026' },
       ],
     },
     {
       id: 'why-business-trips-more-expensive-2026-guide-uae-companies',
-      image: '/Globla-business-solutiona.png',
+      image: '/Globla-business-solutiona.webp',
       title: 'Why Are Business Trips Becoming More Expensive in 2026? A Guide for UAE Companies',
       excerpt:
         'Why business travel costs are rising in 2026 — airfare, fuel, hotel rates and capacity — and how UAE companies can control spend with better policy, planning and reporting.',
@@ -1195,13 +1365,13 @@ const BlogDetailPage: React.FC = () => {
         'If your company is reviewing its corporate travel management approach, the first step is to look at how travel is being booked and managed today, where costs are going, and where greater control could make a difference. Not sure where to start? See our guide on [choosing the right corporate travel agency in Dubai](/blog/how-to-choose-corporate-travel-agency-dubai-10-questions), or [contact Pluto Travels](/contact) to discuss your travel programme.',
       ],
       relatedPosts: [
-        { id: 'how-to-choose-corporate-travel-agency-dubai-10-questions', title: 'How to Choose the Right Corporate Travel Agency in Dubai: 10 Questions to Ask', image: '/business-analytics-suite.png', date: 'Sep 11, 2026' },
-        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.png', date: 'Jun 5, 2026' },
+        { id: 'how-to-choose-corporate-travel-agency-dubai-10-questions', title: 'How to Choose the Right Corporate Travel Agency in Dubai: 10 Questions to Ask', image: '/business-analytics-suite.webp', date: 'Sep 11, 2026' },
+        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.webp', date: 'Jun 5, 2026' },
       ],
     },
     {
       id: 'best-time-plan-corporate-incentive-trips-uae',
-      image: '/global-business-travel-package.png',
+      image: '/global-business-travel-package.webp',
       title: 'Best Time to Plan Corporate Incentive Trips from the UAE',
       excerpt:
         'When to book corporate incentive travel from the UAE — seasons, lead times, budgeting cycles, and destination tips for HR and event planners.',
@@ -1228,13 +1398,13 @@ const BlogDetailPage: React.FC = () => {
         'The best time to plan corporate incentive trips from the UAE is as soon as winners and budgets are confirmed — with a partner who handles [group logistics](/mice) end-to-end. [Request a quote](consult) from Pluto Travels.',
       ],
       relatedPosts: [
-        { id: 'mice-dubai-planners-guide-2026', title: 'MICE in Dubai: A Planner\'s Guide (2026)', image: '/mice-events-conference.png', date: 'Jun 5, 2026' },
-        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.png', date: 'Jun 5, 2026' },
+        { id: 'mice-dubai-planners-guide-2026', title: 'MICE in Dubai: A Planner\'s Guide (2026)', image: '/mice-events-conference.webp', date: 'Jun 5, 2026' },
+        { id: 'corporate-travel-policy-guide-uae-companies', title: 'Corporate Travel Policy Guide for UAE Companies', image: '/corporate-travel-management.webp', date: 'Jun 5, 2026' },
       ],
     },
     {
       id: 'why-uae-companies-switching-corporate-travel-management-2026',
-      image: '/corporate-travel-management-card.png',
+      image: '/corporate-travel-management-card.webp',
       title: 'Why Companies in the UAE Are Switching to Corporate Travel Management in 2026',
       excerpt:
         'Discover why businesses in Dubai, Abu Dhabi, and across the UAE are moving from DIY booking to corporate travel management—to cut hidden costs, save time, and gain control over travel spend.',
@@ -1348,20 +1518,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'corporate-travel-management-best-practices-2026-part1',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jan 12, 2026',
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part2',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 2',
-          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=70',
           date: 'Jan 10, 2026',
         },
       ],
     },
     {
       id: 'top-european-destinations-schengen-visa-guide-pluto-travels',
-      image: '/blog-european-schengen-destinations.png',
+      image: '/blog-european-schengen-destinations.webp',
       title:
         'Top European Destinations to Explore with a Schengen Visa – Your Ultimate Guide from Pluto Travels',
       excerpt:
@@ -1433,20 +1603,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
           title: 'Top Visa Free and Visa on Arrival Destinations for UAE Residents in 2026',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Mar 2, 2026',
         },
         {
           id: 'ultimate-travel-guide-best-things-to-do-dubai-2026',
           title: 'Ultimate Travel Guide: Best Things to Do in Dubai in 2026',
-          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70',
           date: 'Mar 2, 2026',
         },
       ],
     },
     {
       id: 'schengen-visa-rejection-reasons-common-mistakes',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=70',
       title: 'Schengen Visa Rejection Reasons: 15 Common Mistakes and How to Avoid Them',
       excerpt:
         'The 15 most common reasons Schengen visa applications get refused — financial proof, unexplained deposits, weak itineraries, and insurance gaps — and how to avoid them.',
@@ -1602,20 +1772,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'top-european-destinations-schengen-visa-guide-pluto-travels',
           title: 'Top European Destinations to Explore with a Schengen Visa – Your Ultimate Guide from Pluto Travels',
-          image: '/blog-european-schengen-destinations.png',
+          image: '/blog-european-schengen-destinations.webp',
           date: 'Apr 8, 2026',
         },
         {
           id: 'top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
           title: 'Top Visa Free and Visa on Arrival Destinations for UAE Residents in 2026',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Mar 2, 2026',
         },
       ],
     },
     {
       id: 'experiencing-ramadan-in-the-uae-customs-tips-travel-guide',
-      image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=70',
       title: 'Experiencing Ramadan in the UAE: Customs, Tips, and Travel Guide',
       excerpt: 'A guide to Ramadan in the UAE—local customs, fasting etiquette, Iftar and Suhoor, dress codes, and practical tips for a respectful and enjoyable visit.',
       author: 'Travel Team',
@@ -1670,20 +1840,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'ultimate-travel-guide-best-things-to-do-dubai-2026',
           title: 'Ultimate Travel Guide: Best Things to Do in Dubai in 2026',
-          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70',
           date: 'Mar 2, 2026'
         },
         {
           id: 'eid-al-fitr-travel-top-destinations-2026',
           title: 'Eid Al Fitr Travel: Top Destinations to Explore in 2026',
-          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
           date: 'Jan 20, 2026'
         }
       ]
     },
     {
       id: 'top-visa-free-visa-on-arrival-destinations-uae-residents-2026',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=70',
       title: 'Top Visa Free and Visa on Arrival Destinations for UAE Residents in 2026',
       excerpt: 'A guide for UAE residents on visa-free entry, visa on arrival, and e-visa options—Maldives, Georgia, Thailand, Sri Lanka, Oman, and more for easy travel in 2026.',
       author: 'Travel Team',
@@ -1815,20 +1985,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'ultimate-travel-guide-best-things-to-do-dubai-2026',
           title: 'Ultimate Travel Guide: Best Things to Do in Dubai in 2026',
-          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70',
           date: 'Mar 2, 2026'
         },
         {
           id: 'best-affordable-travel-destinations-2026',
           title: 'Best Affordable Travel Destinations for 2026',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70',
           date: 'Jan 15, 2026'
         }
       ]
     },
     {
       id: 'ultimate-travel-guide-best-things-to-do-dubai-2026',
-      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=70',
       title: 'Ultimate Travel Guide: Best Things to Do in Dubai in 2026',
       excerpt: 'A comprehensive guide to Dubai’s top attractions, beaches, desert safaris, culture, shopping, dining, and events—everything you need to plan the perfect trip.',
       author: 'Travel Team',
@@ -1914,20 +2084,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'eid-al-fitr-travel-top-destinations-2026',
           title: 'Eid Al Fitr Travel: Top Destinations to Explore in 2026',
-          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70',
           date: 'Jan 20, 2026'
         },
         {
           id: 'best-affordable-travel-destinations-2026',
           title: 'Best Affordable Travel Destinations for 2026',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70',
           date: 'Jan 15, 2026'
         }
       ]
     },
     {
       id: 'uae-resilience-in-action-navigating-regional-challenges',
-      image: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=800&q=70',
       title: 'UAE Resilience in Action: How Government, Community, and Businesses Navigate Regional Challenges',
       excerpt: 'How the UAE responded with preparedness, unity, and decisive action to protect residents, support stranded travelers, and maintain national stability during a period of regional uncertainty.',
       author: 'Corporate Team',
@@ -1974,20 +2144,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'corporate-travel-management-best-practices-2026-part1',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jan 12, 2026'
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part2',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 2',
-          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=70',
           date: 'Jan 10, 2026'
         }
       ]
     },
     {
       id: 'eid-al-fitr-travel-top-destinations-2026',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=70',
       title: 'Eid Al Fitr Travel: Top Destinations to Explore in 2026',
       excerpt: 'Discover the best destinations for Eid Al Fitr travel in 2026, from Azerbaijan and Georgia to Kenya and Russia, with cultural experiences and festive celebrations.',
       author: 'Travel Team',
@@ -2033,20 +2203,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: '5-unique-corporate-team-building-ideas-that-actually-work',
           title: '5 Unique Corporate Team-Building Ideas That Actually Work',
-          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=70',
           date: 'Jan 18, 2026'
         },
         {
           id: 'best-affordable-travel-destinations-2026',
           title: 'Best Affordable Travel Destinations for 2026',
-          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=70',
           date: 'Jan 15, 2026'
         }
       ]
     },
     {
       id: '5-unique-corporate-team-building-ideas-that-actually-work',
-      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=70',
       title: '5 Unique Corporate Team-Building Ideas That Actually Work',
       excerpt: 'Discover proven corporate team-building ideas that go beyond routine activities, improve employee engagement, and create meaningful connections.',
       author: 'Corporate Team',
@@ -2141,20 +2311,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: 'corporate-travel-management-best-practices-2026-part1',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jan 12, 2026'
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part2',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 2',
-          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=70',
           date: 'Jan 10, 2026'
         }
       ]
     },
     {
       id: 'best-affordable-travel-destinations-2026',
-      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=70',
       title: 'Best Affordable Travel Destinations for 2026',
       excerpt: 'Discover budget-friendly international destinations that offer excellent value for money in 2026.',
       author: 'Travel Team',
@@ -2201,20 +2371,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: '5-unique-corporate-team-building-ideas-that-actually-work',
           title: '5 Unique Corporate Team-Building Ideas That Actually Work',
-          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=70',
           date: 'Jan 18, 2026'
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part1',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jan 12, 2026'
         }
       ]
     },
     {
       id: 'corporate-travel-management-best-practices-2026-part1',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=70',
       title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
       excerpt: 'Essential strategies for optimizing corporate travel spend, improving employee satisfaction, and maintaining compliance.',
       author: 'Corporate Team',
@@ -2255,20 +2425,20 @@ const BlogDetailPage: React.FC = () => {
         {
           id: '5-unique-corporate-team-building-ideas-that-actually-work',
           title: '5 Unique Corporate Team-Building Ideas That Actually Work',
-          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=70',
           date: 'Jan 18, 2026'
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part2',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 2',
-          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=400&q=70',
           date: 'Jan 10, 2026'
         }
       ]
     },
     {
       id: 'corporate-travel-management-best-practices-2026-part2',
-      image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?w=800&q=70',
       title: 'Corporate Travel Management Best Practices for 2026 - Part 2',
       excerpt: 'Advanced strategies for 24/7 support, data-driven decisions, and sustainable corporate travel programs.',
       author: 'Corporate Team',
@@ -2300,13 +2470,13 @@ const BlogDetailPage: React.FC = () => {
         {
           id: '5-unique-corporate-team-building-ideas-that-actually-work',
           title: '5 Unique Corporate Team-Building Ideas That Actually Work',
-          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=70',
           date: 'Jan 18, 2026'
         },
         {
           id: 'corporate-travel-management-best-practices-2026-part1',
           title: 'Corporate Travel Management Best Practices for 2026 - Part 1',
-          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80',
+          image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=70',
           date: 'Jan 12, 2026'
         }
       ]
@@ -2318,6 +2488,7 @@ const BlogDetailPage: React.FC = () => {
   if (!blogData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEOHead pathname={`/blog/${blogId ?? ''}`} override={{ title: 'Post Not Found | Pluto Travels Blog', description: 'This blog post could not be found.', noindex: true }} />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-600 mb-4">Blog Post Not Found</h1>
           <Button variant="gold" onClick={() => navigate('/')}>
@@ -2330,11 +2501,27 @@ const BlogDetailPage: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      <JsonLdSchema
+        pathname={`/blog/${blogData.id}`}
+        type="BlogPosting"
+        article={{
+          headline: blogData.title,
+          description: blogData.excerpt,
+          datePublished: toIsoDate(blogData.date),
+          author: blogData.author,
+          image: blogData.image,
+        }}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: blogData.title, path: `/blog/${blogData.id}` },
+        ]}
+      />
       <Navigation />
       
       {/* Hero Section */}
       <FadeInSection className="relative h-96 overflow-hidden">
-        <img
+        <img loading="lazy" decoding="async"
           src={blogData.image}
           alt={blogData.title}
           className="w-full h-full object-cover"
@@ -2427,6 +2614,8 @@ const BlogDetailPage: React.FC = () => {
                     /^Travel\s+Smarter\s+in\s+.+$/i,
                     /^Why\s+.+Is\s+Trending\s+in\s+.+$/i,
                     /^Experiencing\s+.+$/i,
+                    /^UAE\s+(Tourist|Visit)\s+Visa$/i,
+                    /^(Single|Multiple)-Entry(\s+UAE\s+Visa)?$/i,
                   ];
                   
                   const isSubHeading = subHeadingPatterns.some(pattern => pattern.test(paragraph.trim()));
@@ -2572,7 +2761,7 @@ const BlogDetailPage: React.FC = () => {
                       className="flex gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors"
                       onClick={() => navigate(`/blog/${post.id}`)}
                     >
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={post.image}
                         alt={post.title}
                         className="w-16 h-16 object-cover rounded-lg"

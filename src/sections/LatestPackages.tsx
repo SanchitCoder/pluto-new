@@ -12,7 +12,7 @@ const LatestPackages: React.FC = () => {
   const packages = [
     {
       id: 'paris-adventure',
-      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1520939817895-060bdaf4fe1b?w=600&q=70',
       title: 'Paris Adventure',
       location: 'France',
       duration: '5 Days / 4 Nights',
@@ -23,7 +23,7 @@ const LatestPackages: React.FC = () => {
     },
     {
       id: 'italian-heritage-tour',
-      image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=70',
       title: 'Italian Heritage Tour',
       location: 'Italy',
       duration: '7 Days / 6 Nights',
@@ -34,7 +34,7 @@ const LatestPackages: React.FC = () => {
     },
     {
       id: 'swiss-alps-escape',
-      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1541480601022-2308c0f02487?w=600&q=70',
       title: 'Swiss Alps Escape',
       location: 'Switzerland',
       duration: '6 Days / 5 Nights',
@@ -45,7 +45,7 @@ const LatestPackages: React.FC = () => {
     },
     {
       id: 'amsterdam-explorer',
-      image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80',
+      image: 'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=70',
       title: 'Amsterdam Explorer',
       location: 'Netherlands',
       duration: '4 Days / 3 Nights',
@@ -79,7 +79,7 @@ const LatestPackages: React.FC = () => {
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
             >
               <div className="relative h-48 overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                   src={pkg.image}
                   alt={pkg.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

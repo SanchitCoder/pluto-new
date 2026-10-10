@@ -21,6 +21,36 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PageFAQSection from '../components/PageFAQSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+
+const FIRST_CLASS_FAQS = [
+  {
+    question: 'Can you find first and business class availability when airline websites show none?',
+    answer:
+      'Often, yes. Premium cabin inventory is frequently held back from public booking engines and released closer to departure or through airline relationships we have as an IATA-accredited agency. We can check alternative routings and fare classes that a standard search may not surface.',
+  },
+  {
+    question: 'Do you handle upgrades on tickets already booked?',
+    answer:
+      'Yes — we can advise on upgrade options and miles/points redemptions on eligible tickets, and handle the request with the airline on your behalf where that is possible under the fare conditions.',
+  },
+  {
+    question: 'Is VIP airport service included with a first class booking?',
+    answer:
+      'VIP fast-track, lounge access and meet-and-assist services can be arranged alongside your flight booking, particularly useful for executives with tight connections or high-profile travel.',
+  },
+  {
+    question: 'Are first class fares through Pluto Travels more expensive than booking directly?',
+    answer:
+      'Not necessarily. Because we compare options across airlines and fare classes rather than one airline\'s own site, we can often find better value for the same cabin — and we handle the booking and any changes on your behalf.',
+  },
+  {
+    question: 'Can you book first class travel for a last-minute executive trip?',
+    answer:
+      'Yes, though premium cabin availability tightens closer to departure. Contact our team as early as possible and we will search live availability across airlines and alternative routings.',
+  },
+];
 import LunaAIChatButton from '../components/LunaAIChatButton';
 import MobileBottomCTA from '../components/MobileBottomCTA';
 import ConsultationModal from '../components/ConsultationModal';
@@ -93,7 +123,7 @@ const FirstClassTravelPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-navy/80 via-primary-navy/60 to-transparent" />
@@ -280,6 +310,9 @@ const FirstClassTravelPage: React.FC = () => {
           </motion.div>
         </Container>
       </FadeInSection>
+
+      <PageFAQSection faqs={FIRST_CLASS_FAQS} subtitle="Common questions about first and business class travel with Pluto Travels." />
+      <JsonLdSchema pathname="/first-class-travel" type="FAQPage" variant="faq-only" faqs={FIRST_CLASS_FAQS} />
 
       <Footer />
       <LunaAIChatButton />

@@ -507,7 +507,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
 
         <Reveal delay={0.1} className={reverse ? 'lg:order-1' : ''}>
           <div className="relative">
-            <img
+            <img decoding="async"
               src={image}
               alt={imageAlt}
               loading="lazy"
@@ -582,8 +582,8 @@ const TravelConsultationLandingPage: React.FC = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-navy via-primary-teal to-primary-coral">
-        <img
-          src="/global-coverage-hand-globe.png"
+        <img loading="lazy" decoding="async"
+          src="/global-coverage-hand-globe.webp"
           alt=""
           aria-hidden
           className="absolute inset-0 h-full w-full object-cover opacity-[0.1] mix-blend-overlay"
@@ -684,7 +684,7 @@ const TravelConsultationLandingPage: React.FC = () => {
         icon={Gem}
         eyebrow="Luxury Travel"
         title="Your Holiday Should Feel Exceptional — Not Exhausting to Plan."
-        image="/hotel-solutions-luxury.png"
+        image="/hotel-solutions-luxury.webp"
         imageAlt="Luxury 5-star resort hotel illuminated at dusk"
         bg="bg-white"
         listHeading="Your journey can include:"
@@ -705,7 +705,7 @@ const TravelConsultationLandingPage: React.FC = () => {
         icon={Briefcase}
         eyebrow="Corporate Travel"
         title="Business Travel Shouldn't Become Another Business Problem."
-        image="/corporate-travel-terminal.png"
+        image="/corporate-travel-terminal.webp"
         imageAlt="Business colleagues with luggage meeting in an airport terminal"
         reverse
         bg="bg-luxury-canvas"
@@ -733,7 +733,7 @@ const TravelConsultationLandingPage: React.FC = () => {
         icon={FileCheck}
         eyebrow="Visa Assistance"
         title="Visa Applications Already Have Enough Paperwork."
-        image="/blog-european-schengen-destinations.png"
+        image="/blog-european-schengen-destinations.webp"
         imageAlt="European city skyline at sunset with a passport and map pins in the sky"
         bg="bg-white"
         listHeading="Our assistance can include:"

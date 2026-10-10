@@ -6,6 +6,36 @@ import Container from '../components/Container';
 import Button from '../components/Button';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import PageFAQSection from '../components/PageFAQSection';
+import JsonLdSchema from '../components/JsonLdSchema';
+
+const BUSINESS_TRAVEL_FAQS = [
+  {
+    question: 'How does Pluto Travels help control business travel costs?',
+    answer:
+      'We negotiate corporate fares, apply a travel policy at the point of booking, and consolidate spend reporting so you can see where money is going. Flexible fare options and advance booking windows are used where they genuinely lower cost, rather than defaulting to the cheapest fare regardless of conditions.',
+  },
+  {
+    question: 'Can you manage travel for a small team as well as a large organisation?',
+    answer:
+      'Yes. Our corporate accounts range from a handful of travelling employees to larger teams with multiple departments and approval chains. The booking process and support level scale to the size of your travel programme.',
+  },
+  {
+    question: 'What happens if a flight is cancelled or an employee needs a last-minute change?',
+    answer:
+      'Our team handles rebooking directly — finding alternative flights, adjusting hotel and transfer bookings, and keeping your travel manager informed — so the travelling employee is not left managing a disruption alone.',
+  },
+  {
+    question: 'Do you support travel policy compliance and reporting?',
+    answer:
+      'Yes. Bookings can be aligned to your company\'s travel policy (cabin class, preferred suppliers, approval steps), and we provide spend and booking reports so you have visibility over corporate travel activity.',
+  },
+  {
+    question: 'How do we get started with corporate travel management?',
+    answer:
+      'Request a business travel audit or a consultation using the buttons on this page. We will review your current travel patterns and requirements before proposing a structure for ongoing bookings and support.',
+  },
+];
 import LunaAIChatButton from '../components/LunaAIChatButton';
 import MobileBottomCTA from '../components/MobileBottomCTA';
 import ConsultationModal from '../components/ConsultationModal';
@@ -62,7 +92,7 @@ const BusinessTravelPage: React.FC = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80')`
+            backgroundImage: `url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=70')`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary-navy/80 via-primary-navy/60 to-transparent" />
@@ -232,6 +262,9 @@ const BusinessTravelPage: React.FC = () => {
           </motion.div>
         </Container>
       </FadeInSection>
+
+      <PageFAQSection faqs={BUSINESS_TRAVEL_FAQS} subtitle="Common questions about business travel with Pluto Travels." />
+      <JsonLdSchema pathname="/business-travel" type="FAQPage" variant="faq-only" faqs={BUSINESS_TRAVEL_FAQS} />
 
       <Footer />
       <LunaAIChatButton />
