@@ -72,15 +72,40 @@ const THIN_PAGE_ROUTES = new Set(['/crisis/form']);
  */
 async function captureRoute(page, route) {
   const url = `${BASE_URL}${route}`;
-  await page.goto(url, { waitUntil: 'load', timeout: 60000 });
-  // Let React / react-helmet-async / any viewport-triggered effects settle.
-  await new Promise((r) => setTimeout(r, 450));
+  const minChars = THIN_PAGE_ROUTES.has(route) ? 1 : 80;
+  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+  // `load` + a fixed 450ms is a race on Vercel: GlobalSEO (title/JSON-LD) can render while the
+  // route is still the empty <Suspense> fallback, which has no body text.
+  try {
+    await page.waitForFunction(
+      (min) => {
+        if (document.querySelector('[aria-busy="true"]')) return false;
+        if (!(document.title || '').trim()) return false;
+        const text = (document.body?.textContent || '').replace(/\s+/g, ' ').trim();
+        return text.length >= min;
+      },
+      { timeout: 30000 },
+      minChars
+    );
+  } catch {
+    const debug = await page.evaluate(() => ({
+      title: document.title,
+      busy: !!document.querySelector('[aria-busy="true"]'),
+      textContentLength: (document.body?.textContent || '').trim().length,
+      innerTextLength: (document.body?.innerText || '').trim().length,
+    }));
+    throw new Error(`[prerender] ${route}: page did not render in time (${JSON.stringify(debug)})`);
+  }
+
+  // Let react-helmet-async / viewport-triggered effects settle after the tree is present.
+  await new Promise((r) => setTimeout(r, 350));
 
   const result = await page.evaluate(() => ({
     title: document.title,
     descriptionCount: document.querySelectorAll('meta[name="description"]').length,
     hasJsonLd: !!document.querySelector('script[type="application/ld+json"]'),
-    bodyTextLength: document.body?.innerText?.trim().length ?? 0,
+    bodyTextLength: (document.body?.textContent || '').replace(/\s+/g, ' ').trim().length,
     html: '<!doctype html>\n' + document.documentElement.outerHTML,
   }));
 
@@ -93,7 +118,7 @@ async function captureRoute(page, route) {
   if (!result.hasJsonLd) {
     throw new Error(`[prerender] ${route}: no JSON-LD script found — JsonLdSchema did not render`);
   }
-  if (result.bodyTextLength < 80 && !THIN_PAGE_ROUTES.has(route)) {
+  if (result.bodyTextLength < minChars) {
     throw new Error(`[prerender] ${route}: only ${result.bodyTextLength} chars of body text — page looks blank`);
   }
 
@@ -113,8 +138,11 @@ async function launchBrowser() {
       import('@sparticuz/chromium'),
       import('puppeteer-core'),
     ]);
+    // `--single-process` is for AWS Lambda. On Vercel's build VM it causes blank/flaky pages.
+    chromium.setGraphicsMode = false;
+    const args = chromium.args.filter((a) => a !== '--single-process');
     return puppeteerCore.launch({
-      args: [...chromium.args, '--disable-dev-shm-usage'],
+      args: [...args, '--disable-dev-shm-usage'],
       defaultViewport: { width: 1366, height: 900 },
       executablePath: await chromium.executablePath(),
       headless: 'shell',
@@ -145,6 +173,10 @@ async function main() {
     browser = await launchBrowser();
     const page = await browser.newPage();
     await page.setViewport({ width: 1366, height: 900 });
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    page.on('pageerror', (err) => {
+      console.error(`[prerender] pageerror: ${err?.message || err}`);
+    });
     // Prerendering doesn't need real network calls to third parties (fonts/pixels/maps); block them
     // for speed and determinism, and so a flaky third-party host never fails the production build.
     await page.setRequestInterception(true);
