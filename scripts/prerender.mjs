@@ -114,10 +114,7 @@ async function launchBrowser() {
       import('puppeteer-core'),
     ]);
     return puppeteerCore.launch({
-      args: puppeteerCore.defaultArgs({
-        args: [...chromium.args, '--disable-dev-shm-usage'],
-        headless: 'shell',
-      }),
+      args: [...chromium.args, '--disable-dev-shm-usage'],
       defaultViewport: { width: 1366, height: 900 },
       executablePath: await chromium.executablePath(),
       headless: 'shell',
