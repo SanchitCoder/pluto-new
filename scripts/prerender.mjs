@@ -100,6 +100,36 @@ async function captureRoute(page, route) {
   return result.html;
 }
 
+/**
+ * Vercel's Amazon Linux build image does not ship Chromium system libs (e.g. libnspr4.so),
+ * so stock Puppeteer Chrome fails to launch. Use @sparticuz/chromium there; keep full
+ * Puppeteer locally where those libs exist.
+ */
+async function launchBrowser() {
+  const localArgs = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'];
+
+  if (process.env.VERCEL) {
+    const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
+      import('@sparticuz/chromium'),
+      import('puppeteer-core'),
+    ]);
+    return puppeteerCore.launch({
+      args: puppeteerCore.defaultArgs({
+        args: [...chromium.args, '--disable-dev-shm-usage'],
+        headless: 'shell',
+      }),
+      defaultViewport: { width: 1366, height: 900 },
+      executablePath: await chromium.executablePath(),
+      headless: 'shell',
+    });
+  }
+
+  return puppeteer.launch({
+    headless: true,
+    args: localArgs,
+  });
+}
+
 async function main() {
   if (!existsSync(path.join(DIST, 'index.html'))) {
     throw new Error('[prerender] dist/index.html not found — run `vite build` before prerendering.');
@@ -115,10 +145,7 @@ async function main() {
   let browser;
   const captured = new Map();
   try {
-    browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-    });
+    browser = await launchBrowser();
     const page = await browser.newPage();
     await page.setViewport({ width: 1366, height: 900 });
     // Prerendering doesn't need real network calls to third parties (fonts/pixels/maps); block them
